@@ -1,0 +1,192 @@
+// E-Sim By ELECTRON - Prisma Schema
+// Database models for production
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// User Model
+model User {
+  id              String    @id @default(uuid())
+  email           String    @unique
+  password       String
+  name            String
+  role            UserRole  @default(USER)
+  emailVerified   Boolean   @default(false)
+  emailToken      String?
+  emailTokenExpiry DateTime?
+  twoFactorEnabled Boolean  @default(false)
+  twoFactorSecret String?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  orders         Order[]
+  esims          ESIM[]
+  sessions      Session[]
+  addresses     Address[]
+
+  @@map("users")
+}
+
+enum UserRole {
+  USER
+  ADMIN
+}
+
+// Session Model
+model Session {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  token     String   @unique
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  ipAddress String?
+  userAgent String?
+
+  @@map("sessions")
+}
+
+// Product Model
+model Product {
+  id          String   @id
+  country     String
+  flag        String
+  countryCode String
+  price       Float
+  data        String
+  days        Int
+  region      String
+  network    String
+  coverage   String   @default("99%")
+  rating     Float    @default(4.5)
+  reviews    Int      @default(0)
+  isActive   Boolean  @default(true)
+  createdAt  DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  orderItems OrderItem[]
+  esims     ESIM[]
+
+  @@map("products")
+}
+
+// Order Model
+model Order {
+  id            String      @id @default(uuid())
+  userId        String
+  user          User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  status        OrderStatus @default(PENDING)
+  paymentStatus PaymentStatus @default(PENDING)
+  total         Float
+  currency     String      @default("EUR")
+  items         OrderItem[]
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  @@map("orders")
+}
+
+enum OrderStatus {
+  PENDING
+  CONFIRMED
+  PROCESSING
+  ACTIVE
+  EXPIRED
+  CANCELLED
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  FAILED
+  REFUNDED
+}
+
+// OrderItem Model
+model OrderItem {
+  id        String  @id @default(uuid())
+  orderId   String
+  order    Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId String
+  product  Product @relation(fields: [productId], references: [id])
+  price    Float
+  quantity Int      @default(1)
+
+  @@map("order_items")
+}
+
+// ESIM Model
+model ESIM {
+  id          String     @id @default(uuid())
+  userId      String
+  user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  productId   String?
+  product    Product?   @relation(fields: [productId], references: [id])
+  iccid       String    @unique
+  eid         String?
+  activationCode String?
+  qrCode      String?
+  status      ESIMStatus @default(PENDING)
+  dataUsed    Float      @default(0)
+  dataTotal   Float      @default(0)
+  activatedAt DateTime?
+  expiresAt   DateTime?
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  @@map("esims")
+}
+
+enum ESIMStatus {
+  PENDING
+  ACTIVE
+  EXPIRED
+  SUSPENDED
+}
+
+// Address Model
+model Address {
+  id        String  @id @default(uuid())
+  userId    String
+  user     User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type     AddressType @default(SHIPPING)
+  name     String
+  street   String
+  city     String
+  state    String?
+  postalCode String
+  country  String
+  isDefault Boolean @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("addresses")
+}
+
+enum AddressType {
+  SHIPPING
+  BILLING
+}
+
+// AuditLog Model
+model AuditLog {
+  id        String   @id @default(uuid())
+  userId    String?
+  action    String
+  entity   String
+  entityId String?
+  details  Json?
+  ipAddress String?
+  userAgent String?
+  createdAt DateTime @default(now())
+
+  @@map("audit_logs")
+  @@index([entity, entityId])
+  @@index([userId])
+}
