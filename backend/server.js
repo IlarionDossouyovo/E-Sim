@@ -9,6 +9,7 @@ const productRoutes = require('./routes/products');
 const orderRoutes = require('./routes/orders');
 const esimRoutes = require('./routes/esim');
 const paymentRoutes = require('./routes/payment');
+const resellerRoutes = require('./routes/reseller');
 
 const app = express();
 
@@ -27,6 +28,7 @@ app.use('/api/products', productRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/esim', esimRoutes);
 app.use('/api/payment', paymentRoutes);
+app.use('/api/reseller', resellerRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {
