@@ -1,0 +1,1861 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eSIM Global - Votre Connectivité Mondiale</title>
+    <meta name="description" content="Voyagez sans limite avec nos forfaits eSIM premium. Activation en 2 minutes, couverture de 150+ pays, prix imbattables.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary: #667eea;
+            --primary-dark: #764ba2;
+            --accent: #f093fb;
+            --bg-dark: #0a0e27;
+            --bg-darker: #050812;
+            --bg-light: #1a1f3a;
+            --text-light: rgba(255, 255, 255, 0.9);
+            --text-muted: rgba(255, 255, 255, 0.6);
+            --glass: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --gradient-purple: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            --gradient-blue: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --gradient-sunset: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            --gradient-ocean: linear-gradient(135deg, #2e3192 0%, #1bffff 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--bg-dark);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(10, 14, 39, 0.98);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: var(--gradient-purple);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+            letter-spacing: -1px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo i {
+            -webkit-text-fill-color: #667eea;
+            font-size: 1.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-purple);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .user-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            display: inline-block;
+            font-size: 0.9rem;
+        }
+
+        .btn-primary {
+            background: var(--gradient-purple);
+            color: white;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(102, 126, 234, 0.6);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            color: white;
+            padding: 6rem 0;
+            text-align: center;
+            overflow: hidden;
+            min-height: 650px;
+            display: flex;
+            align-items: center;
+            transition: background 1s ease;
+        }
+
+        .hero.theme-purple {
+            background: var(--gradient-purple);
+        }
+
+        .hero.theme-blue {
+            background: var(--gradient-blue);
+        }
+
+        .hero.theme-sunset {
+            background: var(--gradient-sunset);
+        }
+
+        .hero.theme-ocean {
+            background: var(--gradient-ocean);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.05)" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,138.7C960,139,1056,117,1152,106.7C1248,96,1344,96,1392,96L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            opacity: 0.3;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 0%, transparent 50%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero-badge i {
+            color: #ffc107;
+        }
+
+        .theme-switcher {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 2.5rem;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .theme-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .theme-btn:hover {
+            transform: scale(1.15);
+            border-color: white;
+        }
+
+        .theme-btn.active {
+            border-color: white;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+            transform: scale(1.1);
+        }
+
+        .theme-btn.purple { background: var(--gradient-purple); }
+        .theme-btn.blue { background: var(--gradient-blue); }
+        .theme-btn.sunset { background: var(--gradient-sunset); }
+        .theme-btn.ocean { background: var(--gradient-ocean); }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease-out;
+            font-weight: 800;
+            letter-spacing: -2px;
+            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 2.5rem;
+            animation: fadeInUp 0.8s ease-out 0.3s both;
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat-value {
+            font-size: 2rem;
+            font-weight: 800;
+            display: block;
+        }
+
+        .hero-stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .search-bar {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            border-radius: 60px;
+            padding: 0.8rem 1.2rem;
+            margin: 0 auto 2.5rem;
+            max-width: 600px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            animation: fadeInUp 0.8s ease-out 0.5s both;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .search-bar input {
+            flex: 1;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1rem;
+            outline: none;
+            font-family: inherit;
+        }
+
+        .search-bar input::placeholder {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .search-bar button {
+            background: rgba(255, 255, 255, 0.25);
+            border: none;
+            color: white;
+            padding: 0.7rem 1.3rem;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .search-bar button:hover {
+            background: rgba(255, 255, 255, 0.35);
+            transform: scale(1.05);
+        }
+
+        .hero-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+        }
+
+        /* Main Content */
+        .main-content {
+            background: linear-gradient(180deg, var(--bg-dark) 0%, var(--bg-light) 100%);
+            padding: 4rem 0;
+        }
+
+        .section {
+            margin-bottom: 5rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: white;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Filter Section */
+        .filters {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+            justify-content: center;
+        }
+
+        .filter-item {
+            background: var(--glass);
+            border: 2px solid var(--glass-border);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s;
+            color: var(--text-light);
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+            font-size: 0.9rem;
+        }
+
+        .filter-item:hover {
+            background: rgba(102, 126, 234, 0.2);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .filter-item.active {
+            background: var(--gradient-purple);
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: var(--glass);
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(20px);
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 60px rgba(102, 126, 234, 0.3);
+            border-color: rgba(102, 126, 234, 0.5);
+        }
+
+        .product-header {
+            background: var(--gradient-purple);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-header.blue { background: var(--gradient-blue); }
+        .product-header.sunset { background: var(--gradient-sunset); }
+        .product-header.ocean { background: var(--gradient-ocean); }
+
+        .product-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .product-flag {
+            font-size: 3.5rem;
+            margin-bottom: 0.8rem;
+            filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3));
+            position: relative;
+            z-index: 1;
+        }
+
+        .product-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .product-subtitle {
+            opacity: 0.95;
+            font-size: 0.9rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .product-body {
+            padding: 1.5rem;
+        }
+
+        .product-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-features li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .product-features li:last-child {
+            border-bottom: none;
+        }
+
+        .product-features li span:first-child {
+            opacity: 0.7;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .product-features li span:last-child {
+            font-weight: 600;
+        }
+
+        .product-price {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .price-value {
+            font-size: 2rem;
+            font-weight: 800;
+            background: var(--gradient-purple);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .price-period {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.2rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .stars {
+            color: #ffc107;
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            z-index: 2;
+            box-shadow: 0 4px 15px rgba(245, 87, 108, 0.4);
+        }
+
+        .new-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, #11998e, #38ef7d);
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            z-index: 2;
+            box-shadow: 0 4px 15px rgba(56, 239, 125, 0.4);
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 5rem 0;
+            background: var(--bg-darker);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.2);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient-purple);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.8rem;
+            color: white;
+        }
+
+        .feature-card h3 {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Dashboard Preview */
+        .dashboard-preview {
+            background: var(--glass);
+            border-radius: 24px;
+            padding: 2.5rem;
+            margin: 3rem 0;
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(20px);
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .dashboard-header h3 {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .dashboard-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            padding: 1.5rem;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--glass-border);
+            transition: all 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.3);
+        }
+
+        .stat-value {
+            font-size: 2.2rem;
+            font-weight: 800;
+            background: var(--gradient-purple);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.3rem;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .active-plans {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 1.5rem;
+            border: 1px solid var(--glass-border);
+        }
+
+        .active-plans h4 {
+            color: white;
+            font-size: 1.3rem;
+            margin-bottom: 1.2rem;
+            font-weight: 700;
+        }
+
+        .plan-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid var(--glass-border);
+            transition: all 0.3s;
+            border-radius: 8px;
+        }
+
+        .plan-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .plan-item:last-child {
+            border-bottom: none;
+        }
+
+        .plan-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .plan-flag {
+            font-size: 1.8rem;
+        }
+
+        .plan-details h4 {
+            margin: 0;
+            color: white;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .plan-details p {
+            margin: 0.3rem 0 0 0;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        .plan-status {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .status-active {
+            color: #4caf50;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .status-expiring {
+            color: #ff9800;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .progress-bar {
+            width: 100px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--gradient-purple);
+            transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-darker);
+            color: white;
+            padding: 4rem 0 2rem 0;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.2rem;
+            background: var(--gradient-purple);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.7rem;
+        }
+
+        .footer-section ul li a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+            font-size: 0.9rem;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--glass-border);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            justify-content: center;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .hero-stats {
+                gap: 2rem;
+            }
+
+            .hero-stat-value {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 4rem 0;
+                min-height: auto;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .search-bar {
+                flex-direction: column;
+                border-radius: 20px;
+                padding: 1rem;
+            }
+
+            .search-bar input {
+                width: 100%;
+                text-align: center;
+                padding: 0.5rem;
+            }
+
+            .search-bar button {
+                width: 100%;
+            }
+
+            .filters {
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 0.5rem;
+                flex-wrap: nowrap;
+            }
+
+            .filter-item {
+                flex-shrink: 0;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .dashboard-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .theme-switcher {
+                gap: 0.5rem;
+            }
+
+            .theme-btn {
+                width: 35px;
+                height: 35px;
+            }
+
+            .dashboard-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        /* Mobile Menu */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(10, 14, 39, 0.98);
+            z-index: 999;
+            padding: 5rem 2rem 2rem;
+        }
+
+        .mobile-nav.active {
+            display: block;
+        }
+
+        .mobile-nav ul {
+            list-style: none;
+        }
+
+        .mobile-nav ul li {
+            margin-bottom: 1.5rem;
+        }
+
+        .mobile-nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .close-menu {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">
+                <i class="fas fa-bolt"></i>
+                eSIM Global
+            </a>
+            <ul class="nav-links">
+                <li><a href="#destinations">Destinations</a></li>
+                <li><a href="#plans">Forfaits</a></li>
+                <li><a href="#business">Business</a></li>
+                <li><a href="#support">Support</a></li>
+            </ul>
+            <div class="user-actions">
+                <a href="#" class="btn btn-secondary">Connexion</a>
+                <a href="#" class="btn btn-primary">Inscription</a>
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <button class="close-menu" onclick="toggleMobileMenu()">&times;</button>
+        <ul>
+            <li><a href="#destinations" onclick="toggleMobileMenu()">Destinations</a></li>
+            <li><a href="#plans" onclick="toggleMobileMenu()">Forfaits</a></li>
+            <li><a href="#business" onclick="toggleMobileMenu()">Business</a></li>
+            <li><a href="#support" onclick="toggleMobileMenu()">Support</a></li>
+            <li><a href="#" class="btn btn-secondary" style="display: inline-block; margin-top: 1rem;">Connexion</a></li>
+            <li><a href="#" class="btn btn-primary" style="display: inline-block; margin-top: 0.5rem;">Inscription</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero theme-purple" id="hero">
+        <div class="container hero-content">
+            <div class="hero-badge">
+                <i class="fas fa-check-circle"></i>
+                Activation en 2 minutes • 150+ pays couverts
+            </div>
+
+            <div class="theme-switcher">
+                <div class="theme-btn purple active" data-theme="purple" title="Violet"></div>
+                <div class="theme-btn blue" data-theme="blue" title="Bleu"></div>
+                <div class="theme-btn sunset" data-theme="sunset" title="Coucher de soleil"></div>
+                <div class="theme-btn ocean" data-theme="ocean" title="Océan"></div>
+            </div>
+
+            <h1>Connectivité Mondiale Instantanée</h1>
+            <p>Voyagez sans limite avec nos forfaits eSIM premium. Activation en 2 minutes, couverture de 150+ pays, prix imbattables.</p>
+            
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <span class="hero-stat-value">150+</span>
+                    <span class="hero-stat-label">Pays couverts</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="hero-stat-value">2 min</span>
+                    <span class="hero-stat-label">Activation</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="hero-stat-value">5G/4G</span>
+                    <span class="hero-stat-label">Réseau rapide</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="hero-stat-value">24/7</span>
+                    <span class="hero-stat-label">Support</span>
+                </div>
+            </div>
+            
+            <div class="search-bar">
+                <input type="text" placeholder="🔍 Rechercher votre destination..." id="searchInput">
+                <button onclick="searchDestination()">Rechercher</button>
+            </div>
+            
+            <div class="hero-actions">
+                <a href="#destinations" class="btn btn-primary">✈️ Commencer Maintenant</a>
+                <a href="#compatibility" class="btn btn-secondary">📱 Vérifier Compatibilité</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Pourquoi Choisir eSIM Global ?</h2>
+                <p class="section-subtitle">Une expérience de connectivité без frontières avec des fonctionnalités premium</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Activation Instantanée</h3>
+                    <p>Recevez votre eSIM par email immédiatement après l'achat. Scannez et connectez-vous en 2 minutes.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>150+ Pays</h3>
+                    <p>Couverture mondiale avec les meilleurs opérateurs locaux. Restez connecté où que vous alliez.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-wifi"></i>
+                    </div>
+                    <h3>5G/4G LTE</h3>
+                    <p>Connexions ultra-rapides avec les réseaux 5G et 4G LTE pour une expérience fluide.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Support 24/7</h3>
+                    <p>Une équipe d'assistance disponible à tout moment pour vous aider. Réponse rapide garantie.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tags"></i>
+                    </div>
+                    <h3>Prix Transparents</h3>
+                    <p>Aucun frais caché. Payez uniquement ce que vous voyez. Des tarifs compétitionnels.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-sync"></i>
+                    </div>
+                    <h3>Recharge Facile</h3>
+                    <p>Prolongez votre forfait en quelques clics. Gérez vos données depuis votre espace client.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content" id="destinations">
+        <div class="container">
+            <!-- Filters Section -->
+            <section class="section">
+                <div class="section-header">
+                    <h2 class="section-title">🌍 Destinations Populaires</h2>
+                    <p class="section-subtitle">Choisissez parmi nos forfaits eSIM pour les destinations les plus visitées</p>
+                </div>
+                
+                <div class="filters">
+                    <div class="filter-item active" data-filter="all">🌍 Toutes</div>
+                    <div class="filter-item" data-filter="europe">🇪🇺 Europe</div>
+                    <div class="filter-item" data-filter="americas">🌎 Amériques</div>
+                    <div class="filter-item" data-filter="asia">🌏 Asie</div>
+                    <div class="filter-item" data-filter="africa">🌍 Afrique</div>
+                    <div class="filter-item" data-filter="oceania">🌏 Océanie</div>
+                </div>
+
+                <!-- Product Grid -->
+                <div class="product-grid" id="productGrid">
+                    <!-- France Card -->
+                    <div class="product-card" data-region="europe">
+                        <div class="product-header">
+                            <span class="popular-badge">⭐ Populaire</span>
+                            <div class="product-flag">🇫🇷</div>
+                            <h3 class="product-title">France</h3>
+                            <p class="product-subtitle">Réseau Orange & SFR</p>
+                        </div>
+                        <div class="product-body">
+                            <ul class="product-features">
+                                <li><span>📶 Couverture</span><span>99%</span></li>
+                                <li><span>📱 Data</span><span>5GB - 50GB</span></li>
+                                <li><span>📞 Appels</span><span>Illimités</span></li>
+                                <li><span>⏰ Durée</span><span>7-30 jours</span></li>
+                                <li><span>🚀 Vitesse</span><span>5G/4G LTE</span></li>
+                            </ul>
+                            <div class="product-price">
+                                <div>
+                                    <span class="price-value">15€</span>
+                                    <span class="price-period">/7 jours</span>
+                                </div>
+                            </div>
+                            <div class="rating">
+                                <span class="stars">⭐⭐⭐⭐⭐</span>
+                                <span>4.8 (2,341 avis)</span>
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%;">Acheter Maintenant</button>
+                        </div>
+                    </div>
+
+                    <!-- Spain Card -->
+                    <div class="product-card" data-region="europe">
+                        <div class="product-header">
+                            <div class="product-flag">🇪🇸</div>
+                            <h3 class="product-title">Espagne</h3>
+                            <p class="product-subtitle">Réseau Movistar & Vodafone</p>
+                        </div>
+                        <div class="product-body">
+                            <ul class="product-features">
+                                <li><span>📶 Couverture</span><span>98%</span></li>
+                                <li><span>📱 Data</span><span>3GB - 40GB</span></li>
+                                <li><span>📞 Appels</span><span>Illimités EU</span></li>
+                                <li><span>⏰ Durée</span><span>7-30 jours</span></li>
+                                <li><span>🚀 Vitesse</span><span>5G/4G LTE</span></li>
+                            </ul>
+                            <div class="product-price">
+                                <div>
+                                    <span class="price-value">14€</span>
+                                    <span class="price-period">/7 jours</span>
+                                </div>
+                            </div>
+                            <div class="rating">
+                                <span class="stars">⭐⭐⭐⭐⭐</span>
+                                <span>4.9 (1,987 avis)</span>
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%;">Acheter Maintenant</button>
+                        </div>
+                    </div>
+
+                    <!-- Mexico Card -->
+                    <div class="product-card" data-region="americas">
+                        <div class="product-header blue">
+                            <span class="popular-badge">🔥 Tendance</span>
+                            <div class="product-flag">🇲🇽</div>
+                            <h3 class="product-title">Mexique</h3>
+                            <p class="product-subtitle">Réseau Telcel & AT&T</p>
+                        </div>
+                        <div class="product-body">
+                            <ul class="product-features">
+                                <li><span>📶 Couverture</span><span>95%</span></li>
+                                <li><span>📱 Data</span><span>5GB - 30GB</span></li>
+                                <li><span>📞 Appels</span><span>Illimités MX/US</span></li>
+                                <li><span>⏰ Durée</span><span>7-30 jours</span></li>
+                                <li><span>🚀 Vitesse</span><span>5G/4G LTE</span></li>
+                            </ul>
+                            <div class="product-price">
+                                <div>
+                                    <span class="price-value">18€</span>
+                                    <span class="price-period">/7 jours</span>
+                                </div>
+                            </div>
+                            <div class="rating">
+                                <span class="stars">⭐⭐⭐⭐⭐</span>
+                                <span>4.7 (1,543 avis)</span>
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%;">Acheter Maintenant</button>
+                        </div>
+                    </div>
+
+                    <!-- Japan Card -->
+                    <div class="product-card" data-region="asia">
+                        <div class="product-header ocean">
+                            <span class="new-badge">✨ Nouveau</span>
+                            <div class="product-flag">🇯🇵</div>
+                            <h3 class="product-title">Japon</h3>
+                            <p class="product-subtitle">Réseau NTT & SoftBank</p>
+                        </div>
+                        <div class="product-body">
+                            <ul class="product-features">
+                                <li><span>📶 Couverture</span><span>99%</span></li>
+                                <li><span>📱 Data</span><span>5GB - 50GB</span></li>
+                                <li><span>📞 Appels</span><span>Illimités</span></li>
+                                <li><span>⏰ Durée</span><span>7-30 jours</span></li>
+                                <li><span>🚀 Vitesse</span><span>5G/4G LTE</span></li>
+                            </ul>
+                            <div class="product-price">
+                                <div>
+                                    <span class="price-value">22€</span>
+                                    <span class="price-period">/7 jours</span>
+                                </div>
+                            </div>
+                            <div class="rating">
+                                <span class="stars">⭐⭐⭐⭐⭐</span>
+                                <span>4.9 (3,214 avis)</span>
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%;">Acheter Maintenant</button>
+                        </div>
+                    </div>
+
+                    <!-- USA Card -->
+                    <div class="product-card" data-region="americas">
+                        <div class="product-header">
+                            <span class="popular-badge">⭐ Populaire</span>
+                            <div class="product-flag">🇺🇸</div>
+                            <h3 class="product-title">États-Unis</h3>
+                            <p class="product-subtitle">Réseau AT&T & T-Mobile</p>
+                        </div>
+                        <div class="product-body">
+                            <ul class="product-features">
+                                <li><span>📶 Couverture</span><span>99%</span></li>
+                                <li><span>📱 Data</span><span>5GB - 50GB</span></li>
+                                <li><span>📞 Appels</span><span>Illimités US</span></li>
+                                <li><span>⏰ Durée</span><span>7-30 jours</span></li>
+                                <li><span>🚀 Vitesse</span><span>5G/4G LTE</span></li>
+                            </ul>
+                            <div class="product-price">
+                                <div>
+                                    <span class="price-value">25€</span>
+                                    <span class="price-period">/7 jours</span>
+                                </div>
+                            </div>
+                            <div class="rating">
+                                <span class="stars">⭐⭐⭐⭐⭐</span>
+                                <span>4.8 (4,521 avis)</span>
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%;">Acheter Maintenant</button>
+                        </div>
+                    </div>
+
+                    <!-- UK Card -->
+                    <div class="product-card" data-region="europe">
+                        <div class="product-header">
+                            <div class="product-flag">🇬🇧</div>
+                            <h3 class="product-title">Royaume-Uni</h3>
+                            <p class="product-subtitle">Réseau EE & O2</p>
+                        </div>
+                        <div class="product-body">
+                            <ul class="product-features">
+                                <li><span>📶 Couverture</span><span>99%</span></li>
+                                <li><span>📱 Data</span><span>5GB - 40GB</span></li>
+                                <li><span>📞 Appels</span><span>Illimités UK</span></li>
+                                <li><span>⏰ Durée</span><span>7-30 jours</span></li>
+                                <li><span>🚀 Vitesse</span><span>5G/4G LTE</span></li>
+                            </ul>
+                            <div class="product-price">
+                                <div>
+                                    <span class="price-value">16€</span>
+                                    <span class="price-period">/7 jours</span>
+                                </div>
+                            </div>
+                            <div class="rating">
+                                <span class="stars">⭐⭐⭐⭐⭐</span>
+                                <span>4.7 (1,876 avis)</span>
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%;">Acheter Maintenant</button>
+                        </div>
+                    </div>
+
+                    <!-- Thailand Card -->
+                    <div class="product-card" data-region="asia">
+                        <div class="product-header sunset">
+                            <span class="new-badge">✨ Nouveau</span>
+                            <div class="product-flag">🇹🇭</div>
+                            <h3 class="product-title">Thaïlande</h3>
+                            <p class="product-subtitle">Réseau AIS & True</p>
+                        </div>
+                        <div class="product-body">
+                            <ul class="product-features">
+                                <li><span>📶 Couverture</span><span>95%</span></li>
+                                <li><span>📱 Data</span><span>5GB - 30GB</span></li>
+                                <li><span>📞 Appels</span><span>Illimités</span></li>
+                                <li><span>⏰ Durée</span><span>7-30 jours</span></li>
+                                <li><span>🚀 Vitesse</span><span>5G/4G LTE</span></li>
+                            </ul>
+                            <div class="product-price">
+                                <div>
+                                    <span class="price-value">12€</span>
+                                    <span class="price-period">/7 jours</span>
+                                </div>
+                            </div>
+                            <div class="rating">
+                                <span class="stars">⭐⭐⭐⭐⭐</span>
+                                <span>4.8 (2,109 avis)</span>
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%;">Acheter Maintenant</button>
+                        </div>
+                    </div>
+
+                    <!-- Italy Card -->
+                    <div class="product-card" data-region="europe">
+                        <div class="product-header">
+                            <div class="product-flag">🇮🇹</div>
+                            <h3 class="product-title">Italie</h3>
+                            <p class="product-subtitle">Réseau TIM & Vodafone</p>
+                        </div>
+                        <div class="product-body">
+                            <ul class="product-features">
+                                <li><span>📶 Couverture</span><span>98%</span></li>
+                                <li><span>📱 Data</span><span>3GB - 40GB</span></li>
+                                <li><span>📞 Appels</span><span>Illimités EU</span></li>
+                                <li><span>⏰ Durée</span><span>7-30 jours</span></li>
+                                <li><span>🚀 Vitesse</span><span>5G/4G LTE</span></li>
+                            </ul>
+                            <div class="product-price">
+                                <div>
+                                    <span class="price-value">14€</span>
+                                    <span class="price-period">/7 jours</span>
+                                </div>
+                            </div>
+                            <div class="rating">
+                                <span class="stars">⭐⭐⭐⭐⭐</span>
+                                <span>4.6 (1,432 avis)</span>
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%;">Acheter Maintenant</button>
+                        </div>
+                    </div>
+
+                    <!-- Australia Card -->
+                    <div class="product-card" data-region="oceania">
+                        <div class="product-header ocean">
+                            <div class="product-flag">🇦🇺</div>
+                            <h3 class="product-title">Australie</h3>
+                            <p class="product-subtitle">Réseau Telstra & Optus</p>
+                        </div>
+                        <div class="product-body">
+                            <ul class="product-features">
+                                <li><span>📶 Couverture</span><span>98%</span></li>
+                                <li><span>📱 Data</span><span>5GB - 50GB</span></li>
+                                <li><span>📞 Appels</span><span>Illimités AU</span></li>
+                                <li><span>⏰ Durée</span><span>7-30 jours</span></li>
+                                <li><span>🚀 Vitesse</span><span>5G/4G LTE</span></li>
+                            </ul>
+                            <div class="product-price">
+                                <div>
+                                    <span class="price-value">24€</span>
+                                    <span class="price-period">/7 jours</span>
+                                </div>
+                            </div>
+                            <div class="rating">
+                                <span class="stars">⭐⭐⭐⭐⭐</span>
+                                <span>4.7 (987 avis)</span>
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%;">Acheter Maintenant</button>
+                        </div>
+                    </div>
+
+                    <!-- Brazil Card -->
+                    <div class="product-card" data-region="americas">
+                        <div class="product-header">
+                            <div class="product-flag">🇧🇷</div>
+                            <h3 class="product-title">Brésil</h3>
+                            <p class="product-subtitle">Réseau Vivo & Claro</p>
+                        </div>
+                        <div class="product-body">
+                            <ul class="product-features">
+                                <li><span>📶 Couverture</span><span>96%</span></li>
+                                <li><span>📱 Data</span><span>5GB - 30GB</span></li>
+                                <li><span>📞 Appels</span><span>Illimités BR</span></li>
+                                <li><span>⏰ Durée</span><span>7-30 jours</span></li>
+                                <li><span>🚀 Vitesse</span><span>5G/4G LTE</span></li>
+                            </ul>
+                            <div class="product-price">
+                                <div>
+                                    <span class="price-value">17€</span>
+                                    <span class="price-period">/7 jours</span>
+                                </div>
+                            </div>
+                            <div class="rating">
+                                <span class="stars">⭐⭐⭐⭐⭐</span>
+                                <span>4.6 (1,234 avis)</span>
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%;">Acheter Maintenant</button>
+                        </div>
+                    </div>
+
+                    <!-- Germany Card -->
+                    <div class="product-card" data-region="europe">
+                        <div class="product-header">
+                            <span class="popular-badge">⭐ Populaire</span>
+                            <div class="product-flag">🇩🇪</div>
+                            <h3 class="product-title">Allemagne</h3>
+                            <p class="product-subtitle">Réseau Deutsche Telekom</p>
+                        </div>
+                        <div class="product-body">
+                            <ul class="product-features">
+                                <li><span>📶 Couverture</span><span>99%</span></li>
+                                <li><span>📱 Data</span><span>5GB - 50GB</span></li>
+                                <li><span>📞 Appels</span><span>Illimités EU</span></li>
+                                <li><span>⏰ Durée</span><span>7-30 jours</span></li>
+                                <li><span>🚀 Vitesse</span><span>5G/4G LTE</span></li>
+                            </ul>
+                            <div class="product-price">
+                                <div>
+                                    <span class="price-value">15€</span>
+                                    <span class="price-period">/7 jours</span>
+                                </div>
+                            </div>
+                            <div class="rating">
+                                <span class="stars">⭐⭐⭐⭐⭐</span>
+                                <span>4.9 (2,654 avis)</span>
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%;">Acheter Maintenant</button>
+                        </div>
+                    </div>
+
+                    <!-- China Card -->
+                    <div class="product-card" data-region="asia">
+                        <div class="product-header">
+                            <div class="product-flag">🇨🇳</div>
+                            <h3 class="product-title">Chine</h3>
+                            <p class="product-subtitle">Réseau China Mobile</p>
+                        </div>
+                        <div class="product-body">
+                            <ul class="product-features">
+                                <li><span>📶 Couverture</span><span>98%</span></li>
+                                <li><span>📱 Data</span><span>5GB - 30GB</span></li>
+                                <li><span>📞 Appels</span><span>Illimités CN</span></li>
+                                <li><span>⏰ Durée</span><span>7-30 jours</span></li>
+                                <li><span>🚀 Vitesse</span><span>5G/4G LTE</span></li>
+                            </ul>
+                            <div class="product-price">
+                                <div>
+                                    <span class="price-value">20€</span>
+                                    <span class="price-period">/7 jours</span>
+                                </div>
+                            </div>
+                            <div class="rating">
+                                <span class="stars">⭐⭐⭐⭐⭐</span>
+                                <span>4.5 (1,876 avis)</span>
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%;">Acheter Maintenant</button>
+                        </div>
+                    </div>
+
+                    <!-- South Africa Card -->
+                    <div class="product-card" data-region="africa">
+                        <div class="product-header sunset">
+                            <div class="product-flag">🇿🇦</div>
+                            <h3 class="product-title">Afrique du Sud</h3>
+                            <p class="product-subtitle">Réseau Vodacom & MTN</p>
+                        </div>
+                        <div class="product-body">
+                            <ul class="product-features">
+                                <li><span>📶 Couverture</span><span>95%</span></li>
+                                <li><span>📱 Data</span><span>5GB - 30GB</span></li>
+                                <li><span>📞 Appels</span><span>Illimités ZA</span></li>
+                                <li><span>⏰ Durée</span><span>7-30 jours</span></li>
+                                <li><span>🚀 Vitesse</span><span>5G/4G LTE</span></li>
+                            </ul>
+                            <div class="product-price">
+                                <div>
+                                    <span class="price-value">19€</span>
+                                    <span class="price-period">/7 jours</span>
+                                </div>
+                            </div>
+                            <div class="rating">
+                                <span class="stars">⭐⭐⭐⭐⭐</span>
+                                <span>4.6 (765 avis)</span>
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%;">Acheter Maintenant</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Dashboard Preview -->
+            <section class="section" id="dashboard">
+                <div class="section-header">
+                    <h2 class="section-title">📊 Votre Espace Client</h2>
+                    <p class="section-subtitle">Gérez vos forfaits eSIM en toute simplicité depuis votre tableau de bord</p>
+                </div>
+
+                <div class="dashboard-preview">
+                    <div class="dashboard-header">
+                        <h3>Vue d'ensemble</h3>
+                        <button class="btn btn-primary">Gérer mes forfaits</button>
+                    </div>
+
+                    <div class="dashboard-stats">
+                        <div class="stat-card">
+                            <div class="stat-value">3</div>
+                            <div class="stat-label">Forfaits actifs</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value">18.5 GB</div>
+                            <div class="stat-label">Data utilisée</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value">12 jours</div>
+                            <div class="stat-label">Jours restants</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value">156€</div>
+                            <div class="stat-label">Économies réalisées</div>
+                        </div>
+                    </div>
+
+                    <div class="active-plans">
+                        <h4>Forfaits Actifs</h4>
+                        <div class="plan-item">
+                            <div class="plan-info">
+                                <span class="plan-flag">🇫🇷</span>
+                                <div class="plan-details">
+                                    <h4>France - 20GB</h4>
+                                    <p>Expire le 15 mai 2026</p>
+                                </div>
+                            </div>
+                            <div class="plan-status">
+                                <span class="status-active">● Active</span>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 65%;"></div>
+                                </div>
+                                <span style="color: var(--text-muted); font-size: 0.8rem;">65%</span>
+                            </div>
+                        </div>
+                        <div class="plan-item">
+                            <div class="plan-info">
+                                <span class="plan-flag">🇯🇵</span>
+                                <div class="plan-details">
+                                    <h4>Japon - 10GB</h4>
+                                    <p>Expire le 28 avril 2026</p>
+                                </div>
+                            </div>
+                            <div class="plan-status">
+                                <span class="status-expiring">● Expire bientôt</span>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 85%;"></div>
+                                </div>
+                                <span style="color: var(--text-muted); font-size: 0.8rem;">85%</span>
+                            </div>
+                        </div>
+                        <div class="plan-item">
+                            <div class="plan-info">
+                                <span class="plan-flag">🇺🇸</span>
+                                <div class="plan-details">
+                                    <h4>États-Unis - 15GB</h4>
+                                    <p>Expire le 10 juin 2026</p>
+                                </div>
+                            </div>
+                            <div class="plan-status">
+                                <span class="status-active">● Active</span>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 40%;"></div>
+                                </div>
+                                <span style="color: var(--text-muted); font-size: 0.8rem;">40%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer id="support">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>⚡ eSIM Global</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
+                        Votre partenaire de connectivité mondiale. Voyagez en toute liberté avec nos forfaits eSIM premium dans plus de 150 pays.
+                    </p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Produits</h3>
+                    <ul>
+                        <li><a href="#">Forfaits Data</a></li>
+                        <li><a href="#">Forfaits Appels</a></li>
+                        <li><a href="#">Forfaits illimités</a></li>
+                        <li><a href="#">eSIM Business</a></li>
+                        <li><a href="#">eSIM IoT</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Entreprise</h3>
+                    <ul>
+                        <li><a href="#">À propos</a></li>
+                        <li><a href="#">Carrières</a></li>
+                        <li><a href="#">Presse</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Partenaires</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Centre d'aide</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Statut du réseau</a></li>
+                        <li><a href="#">Compatibilité</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Légal</h3>
+                    <ul>
+                        <li><a href="#">Conditions générales</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                        <li><a href="#">Politique de remboursement</a></li>
+                        <li><a href="#">Mentions légales</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 eSIM Global. Tous droits réservés. | Fait avec ❤️ pour les voyageurs du monde entier</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Switcher
+        const themeBtns = document.querySelectorAll('.theme-btn');
+        const hero = document.getElementById('hero');
+
+        themeBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                themeBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                hero.className = 'hero theme-' + btn.dataset.theme;
+            });
+        });
+
+        // Filter Functionality
+        const filterItems = document.querySelectorAll('.filter-item');
+        const productCards = document.querySelectorAll('.product-card');
+
+        filterItems.forEach(item => {
+            item.addEventListener('click', () => {
+                filterItems.forEach(f => f.classList.remove('active'));
+                item.classList.add('active');
+                
+                const filter = item.dataset.filter;
+                
+                productCards.forEach(card => {
+                    if (filter === 'all' || card.dataset.region === filter) {
+                        card.style.display = 'block';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 50);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+
+        // Search Functionality
+        function searchDestination() {
+            const searchInput = document.getElementById('searchInput');
+            const searchTerm = searchInput.value.toLowerCase();
+            
+            if (searchTerm) {
+                productCards.forEach(card => {
+                    const title = card.querySelector('.product-title').textContent.toLowerCase();
+                    if (title.includes(searchTerm)) {
+                        card.style.display = 'block';
+                    }
+                });
+            }
+        }
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const mobileNav = document.getElementById('mobileNav');
+            mobileNav.classList.toggle('active');
+        }
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.product-card, .feature-card, .stat-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
+        });
+
+        // Initialize animations
+        setTimeout(() => {
+            document.querySelectorAll('.product-card, .feature-card, .stat-card').forEach(el => {
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            });
+        }, 100);
+    </script>
+</body>
+</html>
