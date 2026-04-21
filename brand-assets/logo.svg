@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="mainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#764ba2;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f093fb;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="glowGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#f093fb;stop-opacity:0.8" />
+    </linearGradient>
+    
+    <linearGradient id="iconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea" />
+      <stop offset="50%" style="stop-color:#764ba2" />
+      <stop offset="100%" style="stop-color:#f093fb" />
+    </linearGradient>
+    
+    <linearGradient id="lightGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4facfe" />
+      <stop offset="100%" style="stop-color:#00f2fe" />
+    </linearGradient>
+    
+    <!-- Glow filters -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <filter id="neonGlow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- ============================================ -->
+  <!-- VERSION 1: ICON ONLY (Dark Background)     -->
+  <!-- ============================================ -->
+  <g id="icon-only-dark">
+    <!-- Dark background -->
+    <rect width="800" height="800" fill="#0a0e27" rx="120"/>
+    
+    <!-- Outer glow ring -->
+    <circle cx="400" cy="400" r="200" fill="none" stroke="url(#iconGradient)" stroke-width="3" opacity="0.3"/>
+    <circle cx="400" cy="400" r="220" fill="none" stroke="url(#iconGradient)" stroke-width="1" opacity="0.15"/>
+    
+    <!-- Globe/Chip abstract shape -->
+    <g filter="url(#glow)">
+      <!-- Main globe circle -->
+      <circle cx="400" cy="400" r="140" fill="none" stroke="url(#iconGradient)" stroke-width="4" opacity="0.9"/>
+      
+      <!-- Horizontal globe lines -->
+      <ellipse cx="400" cy="400" rx="140" ry="50" fill="none" stroke="url(#iconGradient)" stroke-width="2" opacity="0.5"/>
+      <ellipse cx="400" cy="400" rx="140" ry="100" fill="none" stroke="url(#iconGradient)" stroke-width="2" opacity="0.35"/>
+      
+      <!-- Vertical arc -->
+      <path d="M 400 260 A 140 140 0 0 1 400 540" fill="none" stroke="url(#iconGradient)" stroke-width="3" opacity="0.7"/>
+      <path d="M 400 260 A 140 140 0 0 0 400 540" fill="none" stroke="url(#iconGradient)" stroke-width="2" opacity="0.4"/>
+      
+      <!-- Digital chip center -->
+      <rect x="355" y="355" width="90" height="90" rx="15" fill="url(#mainGradient)" opacity="0.9"/>
+      <rect x="365" y="365" width="70" height="70" rx="10" fill="#0a0e27" opacity="0.5"/>
+      <rect x="375" y="375" width="50" height="50" rx="8" fill="url(#mainGradient)" opacity="0.8"/>
+      
+      <!-- Chip pins -->
+      <rect x="320" y="395" width="25" height="10" rx="2" fill="url(#iconGradient)" opacity="0.8"/>
+      <rect x="455" y="395" width="25" height="10" rx="2" fill="url(#iconGradient)" opacity="0.8"/>
+      <rect x="395" y="320" width="10" height="25" rx="2" fill="url(#iconGradient)" opacity="0.8"/>
+      <rect x="395" y="455" width="10" height="25" rx="2" fill="url(#iconGradient)" opacity="0.8"/>
+      
+      <!-- Lightning bolt -->
+      <path d="M 410 330 L 385 380 L 405 380 L 390 430 L 425 370 L 405 370 L 420 330 Z" 
+            fill="#fff" filter="url(#neonGlow)"/>
+      
+      <!-- Signal waves -->
+      <g opacity="0.6">
+        <path d="M 280 400 Q 260 400 260 380" fill="none" stroke="url(#iconGradient)" stroke-width="2" stroke-linecap="round"/>
+        <path d="M 265 400 Q 235 400 235 365" fill="none" stroke="url(#iconGradient)" stroke-width="2" stroke-linecap="round"/>
+        <path d="M 250 400 Q 210 400 210 350" fill="none" stroke="url(#iconGradient)" stroke-width="2" stroke-linecap="round"/>
+        
+        <path d="M 520 400 Q 540 400 540 380" fill="none" stroke="url(#iconGradient)" stroke-width="2" stroke-linecap="round"/>
+        <path d="M 535 400 Q 565 400 565 365" fill="none" stroke="url(#iconGradient)" stroke-width="2" stroke-linecap="round"/>
+        <path d="M 550 400 Q 590 400 590 350" fill="none" stroke="url(#iconGradient)" stroke-width="2" stroke-linecap="round"/>
+      </g>
+    </g>
+    
+    <!-- Small E-Sim text at bottom -->
+    <text x="400" y="620" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="28" font-weight="700" fill="url(#mainGradient)">E-SIM</text>
+  </g>
+  
+  <!-- ============================================ -->
+  <!-- VERSION 2: ICON ONLY (Light Background)    -->
+  <!-- ============================================ -->
+  <g id="icon-only-light" transform="translate(0, 800)">
+    <!-- Light background -->
+    <rect width="800" height="800" fill="#ffffff" rx="120"/>
+    
+    <!-- Outer glow ring -->
+    <circle cx="400" cy="400" r="200" fill="none" stroke="url(#iconGradient)" stroke-width="3" opacity="0.4"/>
+    
+    <!-- Globe/Chip abstract shape -->
+    <g filter="url(#softGlow)">
+      <!-- Main globe circle -->
+      <circle cx="400" cy="400" r="140" fill="none" stroke="url(#iconGradient)" stroke-width="4"/>
+      
+      <!-- Horizontal globe lines -->
+      <ellipse cx="400" cy="400" rx="140" ry="50" fill="none" stroke="url(#iconGradient)" stroke-width="2" opacity="0.5"/>
+      <ellipse cx="400" cy="400" rx="140" ry="100" fill="none" stroke="url(#iconGradient)" stroke-width="2" opacity="0.35"/>
+      
+      <!-- Vertical arc -->
+      <path d="M 400 260 A 140 140 0 0 1 400 540" fill="none" stroke="url(#iconGradient)" stroke-width="3" opacity="0.7"/>
+      
+      <!-- Digital chip center -->
+      <rect x="355" y="355" width="90" height="90" rx="15" fill="url(#mainGradient)"/>
+      <rect x="365" y="365" width="70" height="70" rx="10" fill="#ffffff" opacity="0.3"/>
+      <rect x="375" y="375" width="50" height="50" rx="8" fill="url(#mainGradient)" opacity="0.8"/>
+      
+      <!-- Chip pins -->
+      <rect x="320" y="395" width="25" height="10" rx="2" fill="url(#iconGradient)"/>
+      <rect x="455" y="395" width="25" height="10" rx="2" fill="url(#iconGradient)"/>
+      <rect x="395" y="320" width="10" height="25" rx="2" fill="url(#iconGradient)"/>
+      <rect x="395" y="455" width="10" height="25" rx="2" fill="url(#iconGradient)"/>
+      
+      <!-- Lightning bolt -->
+      <path d="M 410 330 L 385 380 L 405 380 L 390 430 L 425 370 L 405 370 L 420 330 Z" 
+            fill="#0a0e27"/>
+      
+      <!-- Signal waves -->
+      <g opacity="0.7">
+        <path d="M 280 400 Q 260 400 260 380" fill="none" stroke="url(#iconGradient)" stroke-width="2" stroke-linecap="round"/>
+        <path d="M 265 400 Q 235 400 235 365" fill="none" stroke="url(#iconGradient)" stroke-width="2" stroke-linecap="round"/>
+        
+        <path d="M 520 400 Q 540 400 540 380" fill="none" stroke="url(#iconGradient)" stroke-width="2" stroke-linecap="round"/>
+        <path d="M 535 400 Q 565 400 565 365" fill="none" stroke="url(#iconGradient)" stroke-width="2" stroke-linecap="round"/>
+      </g>
+    </g>
+    
+    <!-- Small E-Sim text at bottom -->
+    <text x="400" y="620" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="28" font-weight="700" fill="url(#mainGradient)">E-SIM</text>
+  </g>
+  
+  <!-- ============================================ -->
+  <!-- VERSION 3: HORIZONTAL LOGO (Dark)           -->
+  <!-- ============================================ -->
+  <g id="horizontal-dark" transform="translate(0, 1600)">
+    <!-- Dark background -->
+    <rect width="800" height="200" fill="#0a0e27"/>
+    
+    <!-- Logo icon -->
+    <g transform="translate(60, 35)">
+      <!-- Glow effect -->
+      <circle cx="65" cy="65" r="65" fill="url(#glowGradient)" opacity="0.2"/>
+      
+      <!-- Globe ring -->
+      <circle cx="65" cy="65" r="50" fill="none" stroke="url(#iconGradient)" stroke-width="2.5" opacity="0.8"/>
+      <ellipse cx="65" cy="65" rx="50" ry="18" fill="none" stroke="url(#iconGradient)" stroke-width="1.5" opacity="0.4"/>
+      
+      <!-- Chip center -->
+      <rect x="48" y="48" width="34" height="34" rx="6" fill="url(#mainGradient)" opacity="0.9"/>
+      <rect x="53" y="53" width="24" height="24" rx="4" fill="#0a0e27" opacity="0.4"/>
+      <rect x="56" y="56" width="18" height="18" rx="3" fill="url(#mainGradient)" opacity="0.85"/>
+      
+      <!-- Lightning -->
+      <path d="M 68 52 L 58 68 L 65 68 L 60 82 L 75 70 L 68 70 L 73 52 Z" fill="#fff"/>
+    </g>
+    
+    <!-- Text -->
+    <text x="165" y="100" font-family="'Segoe UI', Arial, sans-serif" font-size="52" font-weight="800" fill="url(#mainGradient)">E-SIM</text>
+    <text x="165" y="140" font-family="'Segoe UI', Arial, sans-serif" font-size="22" font-weight="600" fill="#667eea" letter-spacing="8">BY ELECTRON</text>
+  </g>
+  
+  <!-- ============================================ -->
+  <!-- VERSION 4: HORIZONTAL LOGO (Light)          -->
+  <!-- ============================================ -->
+  <g id="horizontal-light" transform="translate(0, 1800)">
+    <!-- Light background -->
+    <rect width="800" height="200" fill="#ffffff"/>
+    
+    <!-- Logo icon -->
+    <g transform="translate(60, 35)">
+      <!-- Globe ring -->
+      <circle cx="65" cy="65" r="50" fill="none" stroke="url(#iconGradient)" stroke-width="2.5"/>
+      <ellipse cx="65" cy="65" rx="50" ry="18" fill="none" stroke="url(#iconGradient)" stroke-width="1.5" opacity="0.4"/>
+      
+      <!-- Chip center -->
+      <rect x="48" y="48" width="34" height="34" rx="6" fill="url(#mainGradient)"/>
+      <rect x="53" y="53" width="24" height="24" rx="4" fill="#ffffff" opacity="0.3"/>
+      <rect x="56" y="56" width="18" height="18" rx="3" fill="url(#mainGradient)" opacity="0.85"/>
+      
+      <!-- Lightning -->
+      <path d="M 68 52 L 58 68 L 65 68 L 60 82 L 75 70 L 68 70 L 73 52 Z" fill="#0a0e27"/>
+    </g>
+    
+    <!-- Text -->
+    <text x="165" y="100" font-family="'Segoe UI', Arial, sans-serif" font-size="52" font-weight="800" fill="url(#mainGradient)">E-SIM</text>
+    <text x="165" y="140" font-family="'Segoe UI', Arial, sans-serif" font-size="22" font-weight="600" fill="#667eea" letter-spacing="8">BY ELECTRON</text>
+  </g>
+  
+  <!-- ============================================ -->
+  <!-- VERSION 5: MOBILE APP ICON (Dark)           -->
+  <!-- ============================================ -->
+  <g id="app-icon-dark" transform="translate(0, 2000)">
+    <!-- Dark background -->
+    <rect width="400" height="400" fill="#0a0e27" rx="80"/>
+    
+    <!-- Outer glow -->
+    <circle cx="200" cy="200" r="160" fill="none" stroke="url(#iconGradient)" stroke-width="2" opacity="0.3"/>
+    
+    <!-- Globe/Chip -->
+    <g transform="translate(0, -10)">
+      <circle cx="200" cy="200" r="90" fill="none" stroke="url(#iconGradient)" stroke-width="3" filter="url(#softGlow)"/>
+      <ellipse cx="200" cy="200" rx="90" ry="32" fill="none" stroke="url(#iconGradient)" stroke-width="1.5" opacity="0.4"/>
+      <ellipse cx="200" cy="200" rx="90" ry="65" fill="none" stroke="url(#iconGradient)" stroke-width="1.5" opacity="0.25"/>
+      
+      <!-- Chip -->
+      <rect x="165" y="165" width="70" height="70" rx="12" fill="url(#mainGradient)"/>
+      <rect x="172" y="172" width="56" height="56" rx="8" fill="#0a0e27" opacity="0.4"/>
+      <rect x="178" y="178" width="44" height="44" rx="6" fill="url(#mainGradient)" opacity="0.85"/>
+      
+      <!-- Chip pins -->
+      <rect x="145" y="195" width="15" height="10" rx="2" fill="url(#iconGradient)"/>
+      <rect x="240" y="195" width="15" height="10" rx="2" fill="url(#iconGradient)"/>
+      <rect x="195" y="145" width="10" height="15" rx="2" fill="url(#iconGradient)"/>
+      <rect x="195" y="240" width="10" height="15" rx="2" fill="url(#iconGradient)"/>
+      
+      <!-- Lightning -->
+      <path d="M 208 165 L 192 195 L 202 195 L 190 230 L 220 190 L 210 190 L 218 165 Z" 
+            fill="#fff" filter="url(#neonGlow)"/>
+      
+      <!-- Signal waves -->
+      <g opacity="0.5">
+        <path d="M 130 200 Q 115 200 115 185" fill="none" stroke="url(#iconGradient)" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M 120 200 Q 100 200 100 175" fill="none" stroke="url(#iconGradient)" stroke-width="1.5" stroke-linecap="round"/>
+        
+        <path d="M 270 200 Q 285 200 285 185" fill="none" stroke="url(#iconGradient)" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M 280 200 Q 300 200 300 175" fill="none" stroke="url(#iconGradient)" stroke-width="1.5" stroke-linecap="round"/>
+      </g>
+    </g>
+  </g>
+  
+  <!-- ============================================ -->
+  <!-- VERSION 6: MOBILE APP ICON (Light)          -->
+  <!-- ============================================ -->
+  <g id="app-icon-light" transform="translate(0, 2400)">
+    <!-- Light background -->
+    <rect width="400" height="400" fill="#ffffff" rx="80"/>
+    
+    <!-- Outer glow -->
+    <circle cx="200" cy="200" r="160" fill="none" stroke="url(#iconGradient)" stroke-width="2" opacity="0.4"/>
+    
+    <!-- Globe/Chip -->
+    <g transform="translate(0, -10)">
+      <circle cx="200" cy="200" r="90" fill="none" stroke="url(#iconGradient)" stroke-width="3"/>
+      <ellipse cx="200" cy="200" rx="90" ry="32" fill="none" stroke="url(#iconGradient)" stroke-width="1.5" opacity="0.4"/>
+      
+      <!-- Chip -->
+      <rect x="165" y="165" width="70" height="70" rx="12" fill="url(#mainGradient)"/>
+      <rect x="172" y="172" width="56" height="56" rx="8" fill="#ffffff" opacity="0.3"/>
+      <rect x="178" y="178" width="44" height="44" rx="6" fill="url(#mainGradient)" opacity="0.85"/>
+      
+      <!-- Chip pins -->
+      <rect x="145" y="195" width="15" height="10" rx="2" fill="url(#iconGradient)"/>
+      <rect x="240" y="195" width="15" height="10" rx="2" fill="url(#iconGradient)"/>
+      <rect x="195" y="145" width="10" height="15" rx="2" fill="url(#iconGradient)"/>
+      <rect x="195" y="240" width="10" height="15" rx="2" fill="url(#iconGradient)"/>
+      
+      <!-- Lightning -->
+      <path d="M 208 165 L 192 195 L 202 195 L 190 230 L 220 190 L 210 190 L 218 165 Z" fill="#0a0e27"/>
+      
+      <!-- Signal waves -->
+      <g opacity="0.6">
+        <path d="M 130 200 Q 115 200 115 185" fill="none" stroke="url(#iconGradient)" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M 270 200 Q 285 200 285 185" fill="none" stroke="url(#iconGradient)" stroke-width="1.5" stroke-linecap="round"/>
+      </g>
+    </g>
+  </g>
+  
+  <!-- ============================================ -->
+  <!-- VERSION 7: MINIMAL ICON (Dark)              -->
+  <!-- ============================================ -->
+  <g id="minimal-dark" transform="translate(0, 2800)">
+    <rect width="400" height="400" fill="#0a0e27" rx="80"/>
+    
+    <!-- Simple chip with lightning -->
+    <g transform="translate(60, 60)" filter="url(#glow)">
+      <!-- Main chip -->
+      <rect x="30" y="30" width="220" height="220" rx="40" fill="url(#mainGradient)"/>
+      <rect x="50" y="50" width="180" height="180" rx="25" fill="#0a0e27" opacity="0.5"/>
+      <rect x="70" y="70" width="140" height="140" rx="20" fill="url(#mainGradient)" opacity="0.9"/>
+      
+      <!-- Lightning bolt -->
+      <path d="M 160 80 L 120 150 L 155 150 L 130 230 L 200 140 L 165 140 L 190 80 Z" 
+            fill="#fff" filter="url(#neonGlow)"/>
+      
+      <!-- Glow accent -->
+      <circle cx="140" cy="140" r="100" fill="none" stroke="url(#iconGradient)" stroke-width="2" opacity="0.3"/>
+    </g>
+  </g>
+  
+  <!-- ============================================ -->
+  <!-- VERSION 8: MINIMAL ICON (Light)             -->
+  <!-- ============================================ -->
+  <g id="minimal-light" transform="translate(0, 3200)">
+    <rect width="400" height="400" fill="#ffffff" rx="80"/>
+    
+    <!-- Simple chip with lightning -->
+    <g transform="translate(60, 60)">
+      <!-- Main chip -->
+      <rect x="30" y="30" width="220" height="220" rx="40" fill="url(#mainGradient)"/>
+      <rect x="50" y="50" width="180" height="180" rx="25" fill="#ffffff" opacity="0.25"/>
+      <rect x="70" y="70" width="140" height="140" rx="20" fill="url(#mainGradient)" opacity="0.9"/>
+      
+      <!-- Lightning bolt -->
+      <path d="M 160 80 L 120 150 L 155 150 L 130 230 L 200 140 L 165 140 L 190 80 Z" fill="#0a0e27"/>
+    </g>
+  </g>
+</svg>

@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>eSIM Global - Votre Connectivité Mondiale</title>
-    <meta name="description" content="Voyagez sans limite avec nos forfaits eSIM premium. Activation en 2 minutes, couverture de 150+ pays, prix imbattables.">
+    <title>E-Sim By ELECTRON - Votre Connectivité Mondiale</title>
+    <meta name="description" content="E-Sim By ELECTRON - Voyagez sans limite avec nos forfaits eSIM premium. Activation en 2 minutes, couverture de 150+ pays, prix imbattables.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="brand-assets/logo.svg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
@@ -65,7 +66,7 @@
         }
 
         .logo {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 800;
             background: var(--gradient-purple);
             -webkit-background-clip: text;
@@ -77,9 +78,24 @@
             gap: 0.5rem;
         }
 
-        .logo i {
-            -webkit-text-fill-color: #667eea;
-            font-size: 1.5rem;
+        .logo img, .logo svg {
+            width: 36px;
+            height: 36px;
+            -webkit-text-fill-color: initial;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+
+        .logo-subtitle {
+            font-size: 0.6rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            opacity: 0.8;
+            -webkit-text-fill-color: var(--primary);
         }
 
         .nav-links {
@@ -1049,8 +1065,23 @@
     <header>
         <nav class="container">
             <a href="#" class="logo">
-                <i class="fas fa-bolt"></i>
-                eSIM Global
+                <svg width="36" height="36" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#667eea"/>
+                            <stop offset="50%" style="stop-color:#764ba2"/>
+                            <stop offset="100%" style="stop-color:#f093fb"/>
+                        </linearGradient>
+                    </defs>
+                    <rect x="30" y="30" width="340" height="340" rx="60" fill="url(#logoGrad)"/>
+                    <rect x="70" y="70" width="260" height="260" rx="40" fill="#0a0e27" opacity="0.5"/>
+                    <rect x="110" y="110" width="180" height="180" rx="30" fill="url(#logoGrad)" opacity="0.9"/>
+                    <path d="M 220 130 L 170 210 L 210 210 L 180 290 L 270 190 L 230 190 L 250 130 Z" fill="#fff"/>
+                </svg>
+                <span class="logo-text">
+                    E-SIM
+                    <span class="logo-subtitle">BY ELECTRON</span>
+                </span>
             </a>
             <ul class="nav-links">
                 <li><a href="#destinations">Destinations</a></li>
@@ -1134,7 +1165,7 @@
     <section class="features-section">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Pourquoi Choisir eSIM Global ?</h2>
+                <h2 class="section-title">Pourquoi Choisir E-Sim By ELECTRON ?</h2>
                 <p class="section-subtitle">Une expérience de connectivité без frontières avec des fonctionnalités premium</p>
             </div>
             
@@ -1689,7 +1720,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>⚡ eSIM Global</h3>
+                    <h3>⚡ E-Sim By ELECTRON</h3>
                     <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
                         Votre partenaire de connectivité mondiale. Voyagez en toute liberté avec nos forfaits eSIM premium dans plus de 150 pays.
                     </p>
@@ -1746,7 +1777,7 @@
             </div>
 
             <div class="footer-bottom">
-                <p>© 2026 eSIM Global. Tous droits réservés. | Fait avec ❤️ pour les voyageurs du monde entier</p>
+                <p>© 2026 E-Sim By ELECTRON. Tous droits réservés. | Fait avec ❤️ pour les voyageurs du monde entier</p>
             </div>
         </div>
     </footer>
