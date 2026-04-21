@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fonctionnalités à Ajouter - E-Sim By ELECTRON</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+            color: #fff;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 40px;
+        }
+
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 3px;
+        }
+
+        .legend-dot.high { background: #4caf50; }
+        .legend-dot.medium { background: #ff9800; }
+        .legend-dot.low { background: #9e9e9e; }
+        .legend-dot.done { background: #2196f3; }
+
+        .category {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .category-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .category-icon.priority-high { background: linear-gradient(135deg, #4caf50, #2e7d32); }
+        .category-icon.priority-medium { background: linear-gradient(135deg, #ff9800, #f57c00); }
+        .category-icon.priority-low { background: linear-gradient(135deg, #9e9e9e, #616161); }
+        .category-icon.done { background: linear-gradient(135deg, #2196f3, #1976d2); }
+
+        .category-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .features-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .feature-item:hover {
+            border-color: rgba(255,255,255,0.2);
+            background: rgba(0,0,0,0.3);
+        }
+
+        .feature-priority {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .feature-priority.high { background: rgba(76,175,80,0.2); color: #4caf50; }
+        .feature-priority.medium { background: rgba(255,152,0,0.2); color: #ff9800; }
+        .feature-priority.low { background: rgba(158,158,158,0.2); color: #9e9e9e; }
+        .feature-priority.done { background: rgba(33,150,243,0.2); color: #2196f3; }
+
+        .feature-content {
+            flex: 1;
+        }
+
+        .feature-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .feature-desc {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+        }
+
+        .feature-tech {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .tech-tag {
+            background: rgba(255,255,255,0.1);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .stat {
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea, #f093fb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .stats { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📋 Fonctionnalités à Ajouter</h1>
+        <p class="subtitle">E-Sim By ELECTRON - Roadmap Complète</p>
+
+        <!-- Legend -->
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-dot high"></div>
+                <span>HAUTE PRIORITÉ</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot medium"></div>
+                <span>MOYENNE</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot low"></div>
+                <span>BASSE</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot done"></div>
+                <span>DÉJÀ FAIT</span>
+            </div>
+        </div>
+
+        <!-- Core Features (HIGH PRIORITY) -->
+        <div class="category">
+            <div class="category-header">
+                <div class="category-icon priority-high">🔴</div>
+                <div class="category-title">Core Features - HAUTE PRIORITÉ</div>
+            </div>
+            <div class="features-list">
+                <div class="feature-item">
+                    <div class="feature-priority high">P1</div>
+                    <div class="feature-content">
+                        <div class="feature-name">📦 Intégration eSIM Provider Réel</div>
+                        <div class="feature-desc">Connecter GigSky, Tata, Truphone ou autre provider réel pour générer de vraies eSIMs</div>
+                        <div class="feature-tech">
+                            <span class="tech-tag">REST API</span>
+                            <span class="tech-tag">OAuth</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-priority high">P1</div>
+                    <div class="feature-content">
+                        <div class="feature-name">💾 Base de Données Production</div>
+                        <div class="feature-desc">Remplacer in-memory DB par PostgreSQL ou MongoDB pour persistance</div>
+                        <div class="feature-tech">
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">Prisma</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-priority high">P1</div>
+                    <div class="feature-content">
+                        <div class="feature-name">🔐 Authentification Avancée</div>
+                        <div class="feature-desc">2FA, mot de passe oublié, validation email, sessions sécurisées</div>
+                        <div class="feature-tech">
+                            <span class="tech-tag">TOTP</span>
+                            <span class="tech-tag">Bcrypt</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-priority high">P1</div>
+                    <div class="feature-content">
+                        <div class="feature-name">💳 Paiements Réels Stripe</div>
+                        <div class="feature-desc">Intégrer Stripe Connect pour accepter paiements réels</div>
+                        <div class="feature-tech">
+                            <span class="tech-tag">Stripe SDK</span>
+                            <span class="tech-tag">Webhooks</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI & Automation (MEDIUM PRIORITY) -->
+        <div class="category">
+            <div class="category-header">
+                <div class="category-icon priority-medium">🟠</div>
+                <div class="category-title">AI & Automation - MOYENNE</div>
+            </div>
+            <div class="features-list">
+                <div class="feature-item">
+                    <div class="feature-priority medium">P2</div>
+                    <div class="feature-content">
+                        <div class="feature-name">🤖 Intégration LLM Réel</div>
+                        <div class="feature-desc">Connecter GPT-4, Claude ou autres LLM pour les agents AI</div>
+                        <div class="feature-tech">
+                            <span class="tech-tag">OpenAI</span>
+                            <span class="tech-tag">Anthropic</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-priority medium">P2</div>
+                    <div class="feature-content">
+                        <div class="feature-name">💬 Chatbot en Temps Réel</div>
+                        <div class="feature-desc">Interface de chat avec l'agent AI en temps réel</div>
+                        <div class="feature-tech">
+                            <span class="tech-tag">WebSocket</span>
+                            <span class="tech-tag">Socket.io</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-priority medium">P2</div>
+                    <div class="feature-content">
+                        <div class="feature-name">📧 Email Automatisés</div>
+                        <div class="feature-desc">Envoyer emails transactionnels (confirmation, reset password, notifications)</div>
+                        <div class="feature-tech">
+                            <span class="tech-tag">SendGrid</span>
+                            <span class="tech-tag">Resend</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-priority medium">P2</div>
+                    <div class="feature-content">
+                        <div class="feature-name">🔔 Push Notifications</div>
+                        <div class="feature-desc">Notifications push pour les appareils mobiles</div>
+                        <div class="feature-tech">
+                            <span class="tech-tag">Firebase</span>
+                            <span class="tech-tag">Expo</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile (MEDIUM PRIORITY) -->
+        <div class="category">
+            <div class="category-header">
+                <div class="category-icon priority-medium">🟠</div>
+                <div class="category-title">Application Mobile - MOYENNE</div>
+            </div>
+            <div class="features-list">
+                <div class="feature-item">
+                    <div class="feature-priority medium">P2</div>
+                    <div class="feature-content">
+                        <div class="feature-name">📱 Toutes les Écrans</div>
+                        <div class="feature-desc">Implémenter ProductsScreen, CartScreen, ESIMsScreen, ProfileScreen</div>
+                        <div class="feature-tech">
+                            <span class="tech-tag">React Native</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-priority medium">P2</div>
+                    <div class="feature-content">
+                        <div class="feature-name">📷 QR Code Scanner</div>
+                        <div class="feature-desc">Scanner les QR codes eSIM directement dans l'app</div>
+                        <div class="feature-tech">
+                            <span class="tech-tag">expo-barcode-scanner</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-priority low">P3</div>
+                    <div class="feature-content">
+                        <div class="feature-name">📲 Widgets Mobile</div>
+                        <div class="feature-desc">Widget iOS/Android pour afficher la data restante</div>
+                        <div class="feature-tech">
+                            <span class="tech-tag">WidgetKit</span>
+                            <span class="tech-tag">Glance</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- UI/UX Improvements (LOW PRIORITY) -->
+        <div class="category">
+            <div class="category-header">
+                <div class="category-icon priority-low">⚫</div>
+                <div class="category-title">Améliorations UI/UX - BASSE</div>
+            </div>
+            <div class="features-list">
+                <div class="feature-item">
+                    <div class="feature-priority low">P3</div>
+                    <div class="feature-content">
+                        <div class="feature-name">🌐 Multi-langues</div>
+                        <div class="feature-desc">Ajouter support EN, ES, DE, IT, PT, JP, CN</div>
+                        <div class="feature-tech">
+                            <span class="tech-tag">i18n</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-priority low">P3</div>
+                    <div class="feature-content">
+                        <div class="feature-name">🌙 Mode Clair/Sombre</div>
+                        <div class="feature-desc">Allow users to switch between light and dark mode</div>
+                        <div class="feature-tech">
+                            <span class="tech-tag">CSS Variables</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-priority low">P3</div>
+                    <div class="feature-content">
+                        <div class="feature-name">🎨 Plus de Thèmes</div>
+                        <div class="feature-desc">Ajouter thèmes Blue, Sunset, Ocean, Forest</div>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-priority low">P3</div>
+                    <div class="feature-content">
+                        <div class="feature-name">📱 Design Responsive Complet</div>
+                        <div class="feature-desc">Améliorer le responsive design pour tablettes</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Business (LOW PRIORITY) -->
+        <div class="category">
+            <div class="category-header">
+                <div class="category-icon priority-low">⚫</div>
+                <div class="category-title">Fonctionnalités Business - BASSE</div>
+            </div>
+            <div class="features-list">
+                <div class="feature-item">
+                    <div class="feature-priority low">P3</div>
+                    <div class="feature-content">
+                        <div class="feature-name">👥 Programme Affilié</div>
+                        <div class="feature-desc">Système de commission pour les affiliés</div>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-priority low">P3</div>
+                    <div class="feature-content">
+                        <div class="feature-name">📊 Analytics Avancé</div>
+                        <div class="feature-desc">Tableau de bord analytique complet (revenue, users, geo)</div>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-priority low">P3</div>
+                    <div class="feature-content">
+                        <div class="feature-name">📧 Newsletter</div>
+                        <div class="feature-desc">Envoyer des newsletters aux utilisateurs</div>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-priority low">P3</div>
+                    <div class="feature-content">
+                        <div class="feature-name">🏢 Comptes Entreprise</div>
+                        <div class="feature-desc">Gestion d'utilisateurs multiples pour entreprises</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-value">25+</div>
+                <div class="stat-label">Features à Ajouter</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">4</div>
+                <div class="stat-label">Haute Priorité</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">8</div>
+                <div class="stat-label">Moyenne</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">13</div>
+                <div class="stat-label">Basse</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
