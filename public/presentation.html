@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Sim By ELECTRON - Présentation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+            color: #fff;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 60px 0;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(102,126,234,0.3) 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        .logo {
+            font-size: 4rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 30px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.1);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .badge span {
+            color: #4caf50;
+        }
+
+        /* Sections */
+        .section {
+            background: rgba(255,255,255,0.05);
+            border-radius: 24px;
+            padding: 40px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title .icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        /* Features */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .feature {
+            background: rgba(0,0,0,0.2);
+            border-radius: 16px;
+            padding: 25px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+            border-color: rgba(102,126,234,0.5);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .feature h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .feature p {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+        }
+
+        /* Tech Stack */
+        .tech-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .tech-item {
+            background: linear-gradient(135deg, rgba(102,126,234,0.2), rgba(118,75,162,0.2));
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-weight: 600;
+            border: 1px solid rgba(102,126,234,0.3);
+        }
+
+        /* Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 16px;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea, #f093fb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+        }
+
+        /* Architecture */
+        .arch-diagram {
+            background: rgba(0,0,0,0.3);
+            border-radius: 16px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .arch-layer {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 20px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+        }
+
+        .arch-layer.client { border-color: #4facfe; }
+        .arch-layer.api { border-color: #667eea; }
+        .arch-layer.ai { border-color: #f093fb; }
+        .arch-layer.data { border-color: #4caf50; }
+
+        .arch-name {
+            font-weight: 600;
+            min-width: 150px;
+        }
+
+        .arch-desc {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+        }
+
+        /* API Endpoints */
+        .api-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .api-item {
+            background: rgba(0,0,0,0.2);
+            padding: 15px 20px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .api-method {
+            font-weight: 700;
+            font-size: 0.8rem;
+            padding: 5px 10px;
+            border-radius: 6px;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        .api-method.get { background: #4caf50; }
+        .api-method.post { background: #2196f3; }
+        .api-method.put { background: #ff9800; }
+
+        .api-path {
+            font-family: monospace;
+            color: rgba(255,255,255,0.8);
+        }
+
+        /* Deployment */
+        .deploy-options {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .deploy-option {
+            background: rgba(0,0,0,0.2);
+            border-radius: 16px;
+            padding: 25px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s;
+        }
+
+        .deploy-option:hover {
+            border-color: #667eea;
+            transform: translateY(-5px);
+        }
+
+        .deploy-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .deploy-name {
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .deploy-desc {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.85rem;
+        }
+
+        /* Pricing */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .pricing-card {
+            background: rgba(0,0,0,0.2);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .pricing-card.featured {
+            border-color: #667eea;
+            transform: scale(1.05);
+        }
+
+        .pricing-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .pricing-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .pricing-price span {
+            font-size: 1rem;
+            font-weight: 400;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .pricing-features {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 25px;
+        }
+
+        .pricing-features li {
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+
+        /* License */
+        .license-box {
+            background: linear-gradient(135deg, rgba(102,126,234,0.2), rgba(118,75,162,0.2));
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            border: 1px solid rgba(102,126,234,0.3);
+        }
+
+        .license-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .license-price {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea, #f093fb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px;
+            color: rgba(255,255,255,0.5);
+        }
+
+        .footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .stats-grid, .api-list, .deploy-options, .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .arch-layer {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero -->
+        <div class="hero">
+            <div class="logo">⚡ E-Sim By ELECTRON</div>
+            <div class="tagline">Plateforme Complete de Connectivité Mondiale</div>
+            <div class="badge">
+                <span>✓</span> Open Source | <span>✓</span> Prêt pour Production | <span>✓</span> AI Intégré
+            </div>
+        </div>
+
+        <!-- Features -->
+        <div class="section">
+            <div class="section-title">
+                <div class="icon">🚀</div>
+                Fonctionnalités Principales
+            </div>
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="feature-icon">🌍</div>
+                    <h3>150+ Destinations</h3>
+                    <p>Forfaits eSIM pour plus de 150 pays avec activation instantanée</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🤖</div>
+                    <h3>6 Agents AI</h3>
+                    <p>Support client, commandes, contenu, analytics, pricing, inventaire</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">⚙️</div>
+                    <h3>Automatisations</h3>
+                    <p>Rapports automatiques, monitoring, optimisations</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📱</div>
+                    <h3>App Mobile</h3>
+                    <p>Application React Native pour iOS et Android</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">💳</div>
+                    <h3>Paiements</h3>
+                    <p>Intégration Stripe prête pour Acceptel</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🔗</div>
+                    <h3>API REST</h3>
+                    <p>API complète pour intégrations tierces</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🔄</div>
+                    <h3>PWA Ready</h3>
+                    <p>Service Worker, manifest, installable</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📊</div>
+                    <h3>Dashboard</h3>
+                    <p>Dashboard utilisateur et admin complets</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="section">
+            <div class="section-title">
+                <div class="icon">📈</div>
+                Statistiques du Projet
+            </div>
+            <div class="stats-grid">
+                <div class="stat">
+                    <div class="stat-value">5000+</div>
+                    <div class="stat-label">Lignes de Code</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">15+</div>
+                    <div class="stat-label">Produits</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">20+</div>
+                    <div class="stat-label">API Endpoints</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">8+</div>
+                    <div class="stat-label">Fichiers Principaux</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tech Stack -->
+        <div class="section">
+            <div class="section-title">
+                <div class="icon">💻</div>
+                Technologies Utilisées
+            </div>
+            <div class="tech-list">
+                <div class="tech-item">Node.js</div>
+                <div class="tech-item">Express.js</div>
+                <div class="tech-item">JWT</div>
+                <div class="tech-item">React Native</div>
+                <div class="tech-item">React Navigation</div>
+                <div class="tech-item">Docker</div>
+                <div class="tech-item">Nginx</div>
+                <div class="tech-item">Redis</div>
+                <div class="tech-item">Stripe</div>
+                <div class="tech-item">Zustand</div>
+                <div class="tech-item">Axios</div>
+            </div>
+        </div>
+
+        <!-- Architecture -->
+        <div class="section">
+            <div class="section-title">
+                <div class="icon">🏗️</div>
+                Architecture
+            </div>
+            <div class="arch-diagram">
+                <div class="arch-layer client">
+                    <div class="arch-name">Frontend</div>
+                    <div class="arch-desc">Site web + PWA + Dashboard + App Mobile</div>
+                </div>
+                <div class="arch-layer api">
+                    <div class="arch-name">API Backend</div>
+                    <div class="arch-desc">Express.js server + routes + auth + middleware</div>
+                </div>
+                <div class="arch-layer ai">
+                    <div class="arch-name">AI Layer</div>
+                    <div class="arch-desc">6 Agents + Automations + Webhooks</div>
+                </div>
+                <div class="arch-layer data">
+                    <div class="arch-name">Data Layer</div>
+                    <div class="arch-desc">In-memory DB + file storage + external APIs</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- API Endpoints -->
+        <div class="section">
+            <div class="section-title">
+                <div class="icon">🔗</div>
+                API Endpoints (20+)
+            </div>
+            <div class="api-list">
+                <div class="api-item">
+                    <div class="api-method get">GET</div>
+                    <div class="api-path">/api/health</div>
+                </div>
+                <div class="api-item">
+                    <div class="api-method post">POST</div>
+                    <div class="api-path">/api/auth/register</div>
+                </div>
+                <div class="api-item">
+                    <div class="api-method post">POST</div>
+                    <div class="api-path">/api/auth/login</div>
+                </div>
+                <div class="api-item">
+                    <div class="api-method get">GET</div>
+                    <div class="api-path">/api/products</div>
+                </div>
+                <div class="api-item">
+                    <div class="api-method post">POST</div>
+                    <div class="api-path">/api/orders</div>
+                </div>
+                <div class="api-item">
+                    <div class="api-method get">GET</div>
+                    <div class="api-path">/api/users/dashboard</div>
+                </div>
+                <div class="api-item">
+                    <div class="api-method post">POST</div>
+                    <div class="api-path">/api/esim/generate</div>
+                </div>
+                <div class="api-item">
+                    <div class="api-method get">GET</div>
+                    <div class="api-path">/api/esim</div>
+                </div>
+                <div class="api-item">
+                    <div class="api-method post">POST</div>
+                    <div class="api-path">/api/esim/:id/activate</div>
+                </div>
+                <div class="api-item">
+                    <div class="api-method post">POST</div>
+                    <div class="api-path">/api/esim/:id/topup</div>
+                </div>
+                <div class="api-item">
+                    <div class="api-method post">POST</div>
+                    <div class="api-path">/api/payment/create-session</div>
+                </div>
+                <div class="api-item">
+                    <div class="api-method post">POST</div>
+                    <div class="api-path">/api/reseller/orders</div>
+                </div>
+                <div class="api-item">
+                    <div class="api-method get">GET</div>
+                    <div class="api-path">/api/automation</div>
+                </div>
+                <div class="api-item">
+                    <div class="api-method post">POST</div>
+                    <div class="api-path">/api/automation/:id/trigger</div>
+                </div>
+                <div class="api-item">
+                    <div class="api-method post">POST</div>
+                    <div class="api-path">/api/webhooks/register</div>
+                </div>
+                <div class="api-item">
+                    <div class="api-method post">POST</div>
+                    <div class="api-path">/api/webhooks/stripe</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Deployment -->
+        <div class="section">
+            <div class="section-title">
+                <div class="icon">☁️</div>
+                Options de Déploiement
+            </div>
+            <div class="deploy-options">
+                <div class="deploy-option">
+                    <div class="deploy-icon">🐳</div>
+                    <div class="deploy-name">Docker</div>
+                    <div class="deploy-desc">Recommandé - Stack complète avec Redis, Nginx, Monitoring</div>
+                </div>
+                <div class="deploy-option">
+                    <div class="deploy-icon">🚂</div>
+                    <div class="deploy-name">Railway</div>
+                    <div class="deploy-desc">Déploiement en un clic, scaling automatique</div>
+                </div>
+                <div class="deploy-option">
+                    <div class="deploy-icon">🌐</div>
+                    <div class="deploy-name">Vercel</div>
+                    <div class="deploy-desc">Serverless, CDN global, CI/CD intégré</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pricing Model -->
+        <div class="section">
+            <div class="section-title">
+                <div class="icon">💰</div>
+                Modèle Économique
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-name">Starter</div>
+                    <div class="pricing-price">0€ <span>/ mois</span></div>
+                    <ul class="pricing-features">
+                        <li>✓ Utilisation personnelle</li>
+                        <li>✓ Tous les features</li>
+                        <li>✓ Support communautaire</li>
+                        <li>✓ Code open source</li>
+                    </ul>
+                </div>
+                <div class="pricing-card featured">
+                    <div class="pricing-name">Business</div>
+                    <div class="pricing-price">99€ <span>/ mois</span></div>
+                    <ul class="pricing-features">
+                        <li>✓ Usage commercial</li>
+                        <li>✓ API keys illimitées</li>
+                        <li>✓ Support prioritaire</li>
+                        <li>✓ Branding blanc</li>
+                    </ul>
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-name">Enterprise</div>
+                    <div class="pricing-price">Sur devis</div>
+                    <ul class="pricing-features">
+                        <li>✓ Multi-tenant</li>
+                        <li>✓ SLA garanti</li>
+                        <li>✓ Formation</li>
+                        <li>✓ Développement custom</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- License -->
+        <div class="section">
+            <div class="section-title">
+                <div class="icon">📜</div>
+                Licence
+            </div>
+            <div class="license-box">
+                <div class="license-name">MIT License</div>
+                <div class="license-price">GRATUIT</div>
+                <p>Libre d'utilisation, modification et distribution</p>
+                <p style="margin-top: 15px; color: rgba(255,255,255,0.6);">
+                    Voir <a href="#" style="color: #667eea;">LICENSE</a> pour les détails complets
+                </p>
+            </div>
+        </div>
+
+        <!-- Info -->
+        <div class="section">
+            <div class="section-title">
+                <div class="icon">ℹ️</div>
+                Informations
+            </div>
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="feature-icon">📅</div>
+                    <h3>Créé le</h3>
+                    <p>21 Avril 2026</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">👤</div>
+                    <h3>Auteur</h3>
+                    <p>Ilarion Dossouyovo</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🐙</div>
+                    <h3>Dépôt GitHub</h3>
+                    <p>github.com/IlarionDossouyovo/E-Sim</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📧</div>
+                    <h3>Contact</h3>
+                    <p>support@esim-electron.com</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>⚡ E-Sim By ELECTRON - Tout droit réservé © 2026</p>
+            <p style="margin-top: 10px;">
+                <a href="https://github.com/IlarionDossouyovo/E-Sim">GitHub</a> | 
+                <a href="#">Documentation</a> | 
+                <a href="#">Support</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
