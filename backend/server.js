@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Serve static files
-app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.static(__dirname + '/../public'));
 
 // API Routes
 app.use('/api/auth', authRoutes);
@@ -35,7 +35,7 @@ app.get('/api/health', (req, res) => {
 
 // Serve frontend for all other routes
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../public/index.html'));
+  res.sendFile(__dirname + '/../public/index.html');
 });
 
 // Error handling middleware
