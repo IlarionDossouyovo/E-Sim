@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Compte - E-Sim By ELECTRON</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary: #667eea;
+            --primary-dark: #764ba2;
+            --accent: #f093fb;
+            --bg-dark: #0a0e27;
+            --bg-darker: #050812;
+            --bg-light: #1a1f3a;
+            --text-light: rgba(255, 255, 255, 0.9);
+            --text-muted: rgba(255, 255, 255, 0.6);
+            --glass: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --gradient-purple: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: var(--bg-dark);
+            color: #333;
+            min-height: 100vh;
+        }
+
+        /* Dashboard Layout */
+        .dashboard-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+        .dashboard-sidebar {
+            width: 280px;
+            background: var(--bg-darker);
+            border-right: 1px solid var(--glass-border);
+            padding: 2rem 0;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .sidebar-logo {
+            padding: 0 1.5rem 2rem;
+            border-bottom: 1px solid var(--glass-border);
+            margin-bottom: 1.5rem;
+        }
+
+        .sidebar-logo a {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            text-decoration: none;
+            color: white;
+            font-weight: 800;
+            font-size: 1.3rem;
+        }
+
+        .sidebar-logo img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 0.3rem;
+        }
+
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.5rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .sidebar-menu a:hover,
+        .sidebar-menu a.active {
+            background: var(--glass);
+            color: white;
+            border-left: 3px solid var(--primary);
+        }
+
+        .sidebar-menu a i {
+            width: 20px;
+        }
+
+        .sidebar-logout {
+            margin-top: 2rem;
+            padding: 0 1.5rem;
+        }
+
+        .sidebar-logout button {
+            width: 100%;
+            padding: 1rem;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            color: var(--text-muted);
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .sidebar-logout button:hover {
+            background: rgba(245, 87, 108, 0.2);
+            border-color: #f5576c;
+            color: #f5576c;
+        }
+
+        /* Main Content */
+        .dashboard-main {
+            flex: 1;
+            margin-left: 280px;
+            padding: 2rem;
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .dashboard-header h1 {
+            color: white;
+            font-size: 1.8rem;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .user-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--gradient-purple);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+        }
+
+        .user-name {
+            color: white;
+            font-weight: 600;
+        }
+
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .stat-card .icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: var(--gradient-purple);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .stat-card .value {
+            font-size: 2rem;
+            font-weight: 800;
+            color: white;
+        }
+
+        .stat-card .label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Section */
+        .dashboard-section {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            color: white;
+            font-size: 1.3rem;
+        }
+
+        /* Orders List */
+        .order-item {
+            background: var(--bg-dark);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .order-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .order-flag {
+            font-size: 2rem;
+        }
+
+        .order-details h4 {
+            color: white;
+            margin-bottom: 0.3rem;
+        }
+
+        .order-details p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .order-meta {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .order-price {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .order-status {
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .order-status.active {
+            background: rgba(76, 175, 80, 0.2);
+            color: #4caf50;
+        }
+
+        .order-status.pending {
+            background: rgba(255, 152, 0, 0.2);
+            color: #ff9800;
+        }
+
+        .order-status.completed {
+            background: rgba(102, 126, 234, 0.2);
+            color: var(--primary);
+        }
+
+        /* eSIM Cards */
+        .esim-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .esim-card {
+            background: var(--bg-dark);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+        }
+
+        .esim-header {
+            background: var(--gradient-purple);
+            padding: 1.5rem;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .esim-country {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .esim-country span {
+            font-size: 1.5rem;
+        }
+
+        .esim-country h3 {
+            font-size: 1.1rem;
+        }
+
+        .esim-body {
+            padding: 1.5rem;
+        }
+
+        .esim-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .esim-info-item {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .esim-info-item strong {
+            color: white;
+            display: block;
+            margin-top: 0.3rem;
+        }
+
+        .esim-data-remaining {
+            margin: 1rem 0;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: var(--glass-border);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 0.5rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--gradient-purple);
+            border-radius: 4px;
+        }
+
+        .esim-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .esim-actions button {
+            flex: 1;
+            padding: 0.8rem;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--gradient-purple);
+            border: none;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--glass-border);
+            color: var(--text-muted);
+        }
+
+        /* QR Code Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--bg-light);
+            border-radius: 20px;
+            padding: 2rem;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+        }
+
+        .modal-content h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .qr-code {
+            background: white;
+            padding: 1rem;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+        }
+
+        .qr-code img {
+            width: 200px;
+            height: 200px;
+        }
+
+        .qr-instructions {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .dashboard-sidebar {
+                display: none;
+            }
+
+            .dashboard-main {
+                margin-left: 0;
+            }
+
+            .order-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .order-meta {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <div class="sidebar-logo">
+                <a href="index.html">
+                    <img src="assets/logo-icon.png" alt="E-Sim" onerror="this.style.display='none'">
+                    <span>⚡ E-SIM</span>
+                </a>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="#" class="active"><i class="fas fa-th-large"></i> Dashboard</a></li>
+                <li><a href="#"><i class="fas fa-shopping-cart"></i> Mes Commandes</a></li>
+                <li><a href="#"><i class="fas fa-sim-card"></i> Mes eSIM</a></li>
+                <li><a href="#"><i class="fas fa-wallet"></i> Recharger</a></li>
+                <li><a href="#"><i class="fas fa-user"></i> Profil</a></li>
+                <li><a href="#"><i class="fas fa-cog"></i> Paramètres</a></li>
+            </ul>
+            <div class="sidebar-logout">
+                <button onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i> Déconnexion
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <div class="dashboard-header">
+                <h1>Mon Tableau de Bord</h1>
+                <div class="user-info">
+                    <div class="user-avatar" id="userAvatar">JD</div>
+                    <span class="user-name" id="userName">Jean Dupont</span>
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="icon"><i class="fas fa-shopping-bag"></i></div>
+                    <div class="value" id="totalOrders">3</div>
+                    <div class="label">Commandes</div>
+                </div>
+                <div class="stat-card">
+                    <div class="icon"><i class="fas fa-sim-card"></i></div>
+                    <div class="value" id="activePlans">2</div>
+                    <div class="label">Forfaits Actifs</div>
+                </div>
+                <div class="stat-card">
+                    <div class="icon"><i class="fas fa-database"></i></div>
+                    <div class="value" id="dataUsed">8.5 GB</div>
+                    <div class="label">Data Utilisée</div>
+                </div>
+                <div class="stat-card">
+                    <div class="icon"><i class="fas fa-wallet"></i></div>
+                    <div class="value" id="totalSpent">89€</div>
+                    <div class="label">Total Dépensé</div>
+                </div>
+            </div>
+
+            <!-- Active eSIMs -->
+            <section class="dashboard-section">
+                <div class="section-header">
+                    <h2 class="section-title">📱 Mes eSIM Actives</h2>
+                </div>
+                <div class="esim-grid" id="esimGrid">
+                    <!-- eSIM Card 1 -->
+                    <div class="esim-card">
+                        <div class="esim-header">
+                            <div class="esim-country">
+                                <span>🇫🇷</span>
+                                <h3>France</h3>
+                            </div>
+                            <span class="order-status active">Active</span>
+                        </div>
+                        <div class="esim-body">
+                            <div class="esim-info">
+                                <div class="esim-info-item">
+                                    Data
+                                    <strong>10 GB</strong>
+                                </div>
+                                <div class="esim-info-item">
+                                    Expire le
+                                    <strong>15 mai 2026</strong>
+                                </div>
+                            </div>
+                            <div class="esim-data-remaining">
+                                <span style="color:var(--text-muted);font-size:0.85rem;">Data restante</span>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 65%;"></div>
+                                </div>
+                                <span style="color:var(--text-muted);font-size:0.8rem;">6.5 GB restants</span>
+                            </div>
+                            <div class="esim-actions">
+                                <button class="btn-primary" onclick="showQRCode('fr')">
+                                    <i class="fas fa-qrcode"></i> Voir QR Code
+                                </button>
+                                <button class="btn-secondary">
+                                    <i class="fas fa-plus"></i> Recharger
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- eSIM Card 2 -->
+                    <div class="esim-card">
+                        <div class="esim-header">
+                            <div class="esim-country">
+                                <span>🇺🇸</span>
+                                <h3>États-Unis</h3>
+                            </div>
+                            <span class="order-status active">Active</span>
+                        </div>
+                        <div class="esim-body">
+                            <div class="esim-info">
+                                <div class="esim-info-item">
+                                    Data
+                                    <strong>20 GB</strong>
+                                </div>
+                                <div class="esim-info-item">
+                                    Expire le
+                                    <strong>28 juin 2026</strong>
+                                </div>
+                            </div>
+                            <div class="esim-data-remaining">
+                                <span style="color:var(--text-muted);font-size:0.85rem;">Data restante</span>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 40%;"></div>
+                                </div>
+                                <span style="color:var(--text-muted);font-size:0.8rem;">8 GB restants</span>
+                            </div>
+                            <div class="esim-actions">
+                                <button class="btn-primary" onclick="showQRCode('us')">
+                                    <i class="fas fa-qrcode"></i> Voir QR Code
+                                </button>
+                                <button class="btn-secondary">
+                                    <i class="fas fa-plus"></i> Recharger
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recent Orders -->
+            <section class="dashboard-section">
+                <div class="section-header">
+                    <h2 class="section-title">📦 Commandes Récentes</h2>
+                    <a href="#" style="color: var(--primary); text-decoration: none;">Voir tout</a>
+                </div>
+                <div id="ordersList">
+                    <div class="order-item">
+                        <div class="order-info">
+                            <span class="order-flag">🇫🇷</span>
+                            <div class="order-details">
+                                <h4>France - 10GB</h4>
+                                <p>Commande #ESM-2026-001 • 15 avr 2026</p>
+                            </div>
+                        </div>
+                        <div class="order-meta">
+                            <span class="order-price">25€</span>
+                            <span class="order-status active">Active</span>
+                        </div>
+                    </div>
+                    <div class="order-item">
+                        <div class="order-info">
+                            <span class="order-flag">🇺🇸</span>
+                            <div class="order-details">
+                                <h4>États-Unis - 20GB</h4>
+                                <p>Commande #ESM-2026-002 • 18 avr 2026</p>
+                            </div>
+                        </div>
+                        <div class="order-meta">
+                            <span class="order-price">45€</span>
+                            <span class="order-status active">Active</span>
+                        </div>
+                    </div>
+                    <div class="order-item">
+                        <div class="order-info">
+                            <span class="order-flag">🇯🇵</span>
+                            <div class="order-details">
+                                <h4>Japon - 5GB</h4>
+                                <p>Commande #ESM-2026-003 • 10 avr 2026</p>
+                            </div>
+                        </div>
+                        <div class="order-meta">
+                            <span class="order-price">19€</span>
+                            <span class="order-status completed">Expirée</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- QR Code Modal -->
+    <div class="modal-overlay" id="qrModal">
+        <div class="modal-content">
+            <h3>📱 QR Code eSIM</h3>
+            <div class="qr-code">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect fill='white' width='200' height='200'/%3E%3Crect fill='black' x='20' y='20' width='60' height='60'/%3E%3Crect fill='white' x='30' y='30' width='40' height='40'/%3E%3Crect fill='black' x='40' y='40' width='20' height='20'/%3E%3Crect fill='black' x='120' y='20' width='60' height='60'/%3E%3Crect fill='white' x='130' y='30' width='40' height='40'/%3E%3Crect fill='black' x='140' y='40' width='20' height='20'/%3E%3Crect fill='black' x='20' y='120' width='60' height='60'/%3E%3Crect fill='white' x='30' y='130' width='40' height='40'/%3E%3Crect fill='black' x='40' y='140' width='20' height='20'/%3E%3C/svg%3E" alt="QR Code">
+            </div>
+            <p class="qr-instructions">
+                Scannez ce code QR avec votre téléphone pour installer votre eSIM.<br><br>
+                <strong>Code de confirmation:</strong><br>
+                <span style="color: var(--primary); font-size: 1.2rem;">ABC123XYZ</span>
+            </p>
+            <button class="btn-primary" style="width: 100%;" onclick="closeQRModal()">Fermer</button>
+        </div>
+    </div>
+
+    <script>
+        // Check authentication
+        // if (!window.esimAPI || !window.esimAPI.isAuthenticated()) {
+        //     window.location.href = 'index.html';
+        // }
+
+        // Demo user data
+        const userData = {
+            name: 'Jean Dupont',
+            initials: 'JD',
+            orders: 3,
+            activePlans: 2,
+            dataUsed: '8.5 GB',
+            totalSpent: '89€'
+        };
+
+        // Update UI with user data
+        document.getElementById('userName').textContent = userData.name;
+        document.getElementById('userAvatar').textContent = userData.initials;
+        document.getElementById('totalOrders').textContent = userData.orders;
+        document.getElementById('activePlans').textContent = userData.activePlans;
+        document.getElementById('dataUsed').textContent = userData.dataUsed;
+        document.getElementById('totalSpent').textContent = userData.totalSpent;
+
+        // QR Code Modal
+        function showQRCode(country) {
+            document.getElementById('qrModal').classList.add('active');
+        }
+
+        function closeQRModal() {
+            document.getElementById('qrModal').classList.remove('active');
+        }
+
+        // Close modal on outside click
+        document.getElementById('qrModal').addEventListener('click', function(e) {
+            if (e.target === this) closeQRModal();
+        });
+
+        // Logout
+        function logout() {
+            // window.esimAPI.auth.logout();
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "name": "E-Sim By ELECTRON",
+  "short_name": "E-Sim",
+  "description": "Connectivité mondiale pour vos voyages - Achetez des forfaits eSIM pour 150+ pays",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0e27",
+  "theme_color": "#667eea",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "brand-assets/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["travel", "utilities", "shopping"],
+  "lang": "fr",
+  "dir": "ltr",
+  "scope": "/",
+  "prefer_related_applications": false
+}

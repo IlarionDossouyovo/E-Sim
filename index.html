@@ -3,8 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO Meta Tags -->
     <title>E-Sim By ELECTRON - Votre Connectivité Mondiale</title>
     <meta name="description" content="E-Sim By ELECTRON - Voyagez sans limite avec nos forfaits eSIM premium. Activation en 2 minutes, couverture de 150+ pays, prix imbattables.">
+    <meta name="keywords" content="eSIM, voyage, connectivité internationale, data mobile, forfait internet, roaming, France, USA, Japon, Europe, carte SIM virtuelle">
+    <meta name="author" content="E-Sim By ELECTRON">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="E-Sim By ELECTRON - Connectivité Mondiale">
+    <meta property="og:description" content="Voyagez sans limite avec nos forfaits eSIM premium. Activation en 2 minutes, couverture de 150+ pays.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://esim-electron.com">
+    <meta property="og:image" content="https://esim-electron.com/assets/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="E-Sim By ELECTRON">
+    <meta name="twitter:description" content="Connectivité mondiale pour vos voyages">
+    <link rel="canonical" href="https://esim-electron.com">
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#667eea">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="brand-assets/logo.svg">
+    <link rel="manifest" href="manifest.json">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -2644,6 +2663,8 @@
                 <li><a href="#plans">Forfaits</a></li>
                 <li><a href="#business">Business</a></li>
                 <li><a href="#support">Support</a></li>
+                <li><a href="dashboard.html" target="_blank">Mon Compte</a></li>
+                <li><a href="admin.html" target="_blank" style="color: var(--primary);">Admin</a></li>
             </ul>
             <div class="user-actions">
                 <div class="lang-selector">
@@ -4441,6 +4462,19 @@
 
         // Initialize - show cookie banner after delay
         // Already handled above with setTimeout
+
+        // Register Service Worker for PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('SW registered:', registration);
+                    })
+                    .catch(error => {
+                        console.log('SW registration failed:', error);
+                    });
+            });
+        }
     </script>
 </body>
 </html>
