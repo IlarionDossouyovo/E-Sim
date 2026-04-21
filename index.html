@@ -1984,6 +1984,636 @@
             color: var(--text-muted);
             cursor: pointer;
         }
+
+        /* ============================================ */
+        /* LIVE CHAT WIDGET                            */
+        /* ============================================ */
+        .chat-widget {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1500;
+        }
+
+        .chat-toggle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--gradient-purple);
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.5);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chat-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .chat-toggle.has-unread::after {
+            content: '';
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            width: 15px;
+            height: 15px;
+            background: #f5576c;
+            border-radius: 50%;
+            border: 2px solid var(--bg-dark);
+        }
+
+        .chat-window {
+            display: none;
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 380px;
+            height: 500px;
+            background: var(--bg-light);
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            flex-direction: column;
+        }
+
+        .chat-window.active {
+            display: flex;
+        }
+
+        .chat-header {
+            background: var(--gradient-purple);
+            padding: 1.2rem;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .chat-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+
+        .chat-header-info h4 {
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .chat-header-info span {
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
+
+        .chat-close {
+            margin-left: auto;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.3rem;
+            cursor: pointer;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .chat-message {
+            max-width: 80%;
+            padding: 0.8rem 1rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .chat-message.support {
+            background: var(--glass);
+            color: var(--text-light);
+            align-self: flex-start;
+            border-bottom-left-radius: 5px;
+        }
+
+        .chat-message.user {
+            background: var(--gradient-purple);
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 5px;
+        }
+
+        .chat-time {
+            font-size: 0.7rem;
+            opacity: 0.7;
+            margin-top: 0.3rem;
+        }
+
+        .chat-quick-answers {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .quick-answer {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .quick-answer:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .chat-input-area {
+            padding: 1rem;
+            border-top: 1px solid var(--glass-border);
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .chat-input-area input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border: 1px solid var(--glass-border);
+            border-radius: 25px;
+            background: var(--glass);
+            color: white;
+            font-size: 0.9rem;
+        }
+
+        .chat-input-area input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .chat-input-area button {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--gradient-purple);
+            border: none;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .chat-input-area button:hover {
+            transform: scale(1.1);
+        }
+
+        .chat-typing {
+            display: none;
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .chat-typing.active {
+            display: block;
+        }
+
+        .chat-typing span {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: var(--primary);
+            border-radius: 50%;
+            margin: 0 2px;
+            animation: typing 1.4s infinite;
+        }
+
+        .chat-typing span:nth-child(2) { animation-delay: 0.2s; }
+        .chat-typing span:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes typing {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-5px); }
+        }
+
+        /* ============================================ */
+        /* COOKIE CONSENT BANNER                       */
+        /* ============================================ */
+        .cookie-banner {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--bg-light);
+            border-top: 1px solid var(--glass-border);
+            padding: 1.5rem 2rem;
+            z-index: 2500;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .cookie-banner.active {
+            display: flex;
+        }
+
+        .cookie-content {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .cookie-icon {
+            font-size: 2rem;
+        }
+
+        .cookie-text {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .cookie-text a {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+
+        .cookie-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .cookie-btn {
+            padding: 0.7rem 1.5rem;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .cookie-btn.accept {
+            background: var(--gradient-purple);
+            border: none;
+            color: white;
+        }
+
+        .cookie-btn.decline {
+            background: transparent;
+            border: 2px solid var(--glass-border);
+            color: var(--text-muted);
+        }
+
+        .cookie-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* ============================================ */
+        /* BACK TO TOP BUTTON                          */
+        /* ============================================ */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient-purple);
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1000;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.6);
+        }
+
+        /* ============================================ */
+        /* SOCIAL SHARE BUTTONS                        */
+        /* ============================================ */
+        .social-share {
+            position: fixed;
+            top: 200px;
+            left: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            z-index: 1000;
+        }
+
+        .social-share-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: none;
+            color: white;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .social-share-btn:hover {
+            transform: translateX(5px);
+        }
+
+        .social-share-btn.facebook { background: #1877f2; }
+        .social-share-btn.twitter { background: #1da1f2; }
+        .social-share-btn.whatsapp { background: #25d366; }
+        .social-share-btn.linkedin { background: #0077b5; }
+
+        /* ============================================ */
+        /* ORDER TRACKING MODAL                        */
+        /* ============================================ */
+        .tracking-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .tracking-modal.active {
+            display: flex;
+        }
+
+        .tracking-content {
+            background: var(--bg-light);
+            border-radius: 20px;
+            width: 90%;
+            max-width: 500px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .tracking-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--glass-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .tracking-header h3 {
+            color: white;
+            font-size: 1.3rem;
+        }
+
+        .tracking-body {
+            padding: 2rem;
+        }
+
+        .tracking-input {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .tracking-input input {
+            flex: 1;
+            padding: 1rem;
+            border: 2px solid var(--glass-border);
+            border-radius: 12px;
+            background: var(--glass);
+            color: white;
+            font-size: 1rem;
+        }
+
+        .tracking-result {
+            display: none;
+        }
+
+        .tracking-result.active {
+            display: block;
+        }
+
+        .tracking-steps {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .tracking-steps::before {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--glass-border);
+        }
+
+        .tracking-step {
+            position: relative;
+            padding-bottom: 1.5rem;
+        }
+
+        .tracking-step:last-child {
+            padding-bottom: 0;
+        }
+
+        .tracking-step::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--glass-border);
+            border: 3px solid var(--bg-light);
+        }
+
+        .tracking-step.completed::before {
+            background: #4caf50;
+        }
+
+        .tracking-step.active::before {
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+        }
+
+        .tracking-step h4 {
+            color: white;
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .tracking-step p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .tracking-step .date {
+            font-size: 0.75rem;
+            color: var(--primary);
+            margin-top: 0.3rem;
+        }
+
+        /* ============================================ */
+        /* INSTALLATION GUIDE MODAL                    */
+        /* ============================================ */
+        .install-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .install-modal.active {
+            display: flex;
+        }
+
+        .install-content {
+            background: var(--bg-light);
+            border-radius: 20px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            border: 1px solid var(--glass-border);
+        }
+
+        .install-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--glass-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            background: var(--bg-light);
+        }
+
+        .install-header h3 {
+            color: white;
+            font-size: 1.3rem;
+        }
+
+        .install-body {
+            padding: 2rem;
+        }
+
+        .install-step {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            align-items: flex-start;
+        }
+
+        .install-step:last-child {
+            margin-bottom: 0;
+        }
+
+        .install-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--gradient-purple);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .install-info h4 {
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .install-info p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .install-qr-info {
+            background: var(--glass);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        .install-qr-info i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .install-qr-info p {
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .chat-window {
+                width: 90vw;
+                right: -5vw;
+            }
+            
+            .social-share {
+                top: auto;
+                bottom: 100px;
+                flex-direction: row;
+                left: 10px;
+            }
+            
+            .cookie-banner {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .cookie-content {
+                flex-direction: column;
+            }
+        }
     </style>
 </head>
 <body>
@@ -3053,6 +3683,160 @@
     <!-- Toast Container -->
     <div class="toast-container" id="toastContainer"></div>
 
+    <!-- Live Chat Widget -->
+    <div class="chat-widget">
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <div class="chat-avatar">💬</div>
+                <div class="chat-header-info">
+                    <h4>Support E-Sim</h4>
+                    <span>En ligne • Répond en 2min</span>
+                </div>
+                <button class="chat-close" onclick="toggleChat()">&times;</button>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="chat-message support">
+                    Bonjour! 👋 Comment puis-je vous aider aujourd'hui?
+                    <div class="chat-time">Maintenant</div>
+                </div>
+                <div class="chat-quick-answers">
+                    <span class="quick-answer" onclick="sendQuickAnswer('Comment activer ma eSIM?')">Comment activer?</span>
+                    <span class="quick-answer" onclick="sendQuickAnswer('Quels pays sont couverts?')">Pays couverts</span>
+                    <span class="quick-answer" onclick="sendQuickAnswer('Prix et forfaits')">Prix/Forfaits</span>
+                </div>
+            </div>
+            <div class="chat-typing" id="chatTyping">
+                <span></span><span></span><span></span>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chatInput" placeholder="Tapez votre message..." onkeypress="handleChatKeypress(event)">
+                <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+        <button class="chat-toggle" id="chatToggle" onclick="toggleChat()">
+            <i class="fas fa-comments"></i>
+        </button>
+    </div>
+
+    <!-- Cookie Consent Banner -->
+    <div class="cookie-banner" id="cookieBanner">
+        <div class="cookie-content">
+            <span class="cookie-icon">🍪</span>
+            <p class="cookie-text">
+                Nous utilisons des cookies pour améliorer votre expérience. 
+                <a href="#">En savoir plus</a>
+            </p>
+        </div>
+        <div class="cookie-buttons">
+            <button class="cookie-btn decline" onclick="declineCookies()">Refuser</button>
+            <button class="cookie-btn accept" onclick="acceptCookies()">Accepter</button>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Social Share Buttons -->
+    <div class="social-share">
+        <button class="social-share-btn facebook" onclick="shareOn('facebook')" title="Partager sur Facebook">
+            <i class="fab fa-facebook-f"></i>
+        </button>
+        <button class="social-share-btn twitter" onclick="shareOn('twitter')" title="Partager sur Twitter">
+            <i class="fab fa-twitter"></i>
+        </button>
+        <button class="social-share-btn whatsapp" onclick="shareOn('whatsapp')" title="Partager sur WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </button>
+        <button class="social-share-btn linkedin" onclick="shareOn('linkedin')" title="Partager sur LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+        </button>
+    </div>
+
+    <!-- Order Tracking Modal -->
+    <div class="tracking-modal" id="trackingModal">
+        <div class="tracking-content">
+            <div class="tracking-header">
+                <h3>📦 Suivre ma commande</h3>
+                <button class="close-cart" onclick="closeTracking()">&times;</button>
+            </div>
+            <div class="tracking-body">
+                <div class="tracking-input">
+                    <input type="text" id="trackingNumber" placeholder="Entrez votre numéro de commande">
+                    <button class="btn btn-primary" onclick="trackOrder()">Suivre</button>
+                </div>
+                <div class="tracking-result" id="trackingResult">
+                    <div class="tracking-steps">
+                        <div class="tracking-step completed">
+                            <h4>Commande confirmée</h4>
+                            <p>Votre paiement a été validé</p>
+                            <div class="date">15 avr 2026, 10:30</div>
+                        </div>
+                        <div class="tracking-step completed">
+                            <h4>eSIM en cours de préparation</h4>
+                            <p>Génération de votre code QR en cours</p>
+                            <div class="date">15 avr 2026, 10:35</div>
+                        </div>
+                        <div class="tracking-step active">
+                            <h4>Prêt à activer</h4>
+                            <p>Votre eSIM est prête,code QR envoyé par email</p>
+                            <div class="date">Maintenant</div>
+                        </div>
+                        <div class="tracking-step">
+                            <h4>Expédié</h4>
+                            <p>Email de confirmation envoyé</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Installation Guide Modal -->
+    <div class="install-modal" id="installModal">
+        <div class="install-content">
+            <div class="install-header">
+                <h3>📱 Guide d'installation eSIM</h3>
+                <button class="close-cart" onclick="closeInstallGuide()">&times;</button>
+            </div>
+            <div class="install-body">
+                <div class="install-step">
+                    <div class="install-number">1</div>
+                    <div class="install-info">
+                        <h4>Recevez votre code QR</h4>
+                        <p>Après votre achat, vous recevrez un email avec votre code QR unique dans les 2 minutes.</p>
+                    </div>
+                </div>
+                <div class="install-step">
+                    <div class="install-number">2</div>
+                    <div class="install-info">
+                        <h4>Ouvrez les paramètres</h4>
+                        <p>Allez dans <strong>Paramètres → Données mobiles/Cellulaire → Ajouter un forfait</strong></p>
+                    </div>
+                </div>
+                <div class="install-step">
+                    <div class="install-number">3</div>
+                    <div class="install-info">
+                        <h4>Scannez le QR Code</h4>
+                        <p>Cliquez sur "Scanner le code QR" et pointez votre caméra vers le code reçu par email.</p>
+                    </div>
+                </div>
+                <div class="install-step">
+                    <div class="install-number">4</div>
+                    <div class="install-info">
+                        <h4>Activez votre eSIM</h4>
+                        <p>Suivez les instructions à l'écran. Votre forfait sera activé automatiquement!</p>
+                    </div>
+                </div>
+                <div class="install-qr-info">
+                    <i class="fas fa-qrcode"></i>
+                    <p>Le code QR a été envoyé à votre email après l'achat</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer id="support">
         <div class="container">
@@ -3503,6 +4287,160 @@
         document.getElementById('authModal').addEventListener('click', function(e) {
             if (e.target === this) closeAuthModal();
         });
+
+        // ============================================
+        // LIVE CHAT WIDGET
+        // ============================================
+        function toggleChat() {
+            const chatWindow = document.getElementById('chatWindow');
+            const chatToggle = document.getElementById('chatToggle');
+            chatWindow.classList.toggle('active');
+            chatToggle.classList.toggle('has-unread');
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            if (!message) return;
+            
+            addChatMessage(message, 'user');
+            input.value = '';
+            
+            // Show typing indicator
+            const typing = document.getElementById('chatTyping');
+            typing.classList.add('active');
+            
+            // Simulate response
+            setTimeout(() => {
+                typing.classList.remove('active');
+                const responses = {
+                    'Comment activer ma eSIM?': 'Pour activer votre eSIM, recevez le QR code par email puis scannez-le dans Paramètres > Données mobiles > Ajouter un forfait.',
+                    'Quels pays sont couverts?': 'Nous couvrons plus de 150 pays! Dont France, USA, Japon, Royaume-Uni, Allemagne, Espagne, Italie, et beaucoup plus.',
+                    'Prix et forfaits': 'Nos forfaits starts à 5€ pour 1GB/7 jours. Cliquez sur "Acheter" pour voir toutes les options.'
+                };
+                
+                const response = responses[message] || 'Merci pour votre message! Notre équipe va vous répondre sous 2 minutes. Vous pouvez aussi consulter notre FAQ.';
+                addChatMessage(response, 'support');
+            }, 1500);
+        }
+
+        function addChatMessage(text, sender) {
+            const messages = document.getElementById('chatMessages');
+            const time = new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+            
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `chat-message ${sender}`;
+            messageDiv.innerHTML = `${text}<div class="chat-time">${time}</div>`;
+            
+            messages.appendChild(messageDiv);
+            messages.scrollTop = messages.scrollHeight;
+        }
+
+        function sendQuickAnswer(answer) {
+            addChatMessage(answer, 'user');
+            sendMessage();
+        }
+
+        function handleChatKeypress(e) {
+            if (e.key === 'Enter') sendMessage();
+        }
+
+        // ============================================
+        // COOKIE CONSENT
+        // ============================================
+        setTimeout(() => {
+            if (!localStorage.getItem('cookieConsent')) {
+                document.getElementById('cookieBanner').classList.add('active');
+            }
+        }, 2000);
+
+        function acceptCookies() {
+            localStorage.setItem('cookieConsent', 'accepted');
+            document.getElementById('cookieBanner').classList.remove('active');
+            showToast('Cookies acceptés!', 'success');
+        }
+
+        function declineCookies() {
+            localStorage.setItem('cookieConsent', 'declined');
+            document.getElementById('cookieBanner').classList.remove('active');
+        }
+
+        // ============================================
+        // BACK TO TOP BUTTON
+        // ============================================
+        window.addEventListener('scroll', () => {
+            const backToTop = document.getElementById('backToTop');
+            if (window.scrollY > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ============================================
+        // SOCIAL SHARE
+        // ============================================
+        function shareOn(platform) {
+            const url = encodeURIComponent(window.location.href);
+            const title = encodeURIComponent('E-Sim By ELECTRON - Connectivité mondiale');
+            
+            const shareUrls = {
+                facebook: `https://www.facebook.com/sharer/sharer.php?u=${url}`,
+                twitter: `https://twitter.com/intent/tweet?url=${url}&text=${title}`,
+                whatsapp: `https://wa.me/?text=${title} ${url}`,
+                linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${url}`
+            };
+            
+            window.open(shareUrls[platform], '_blank', 'width=600,height=400');
+        }
+
+        // ============================================
+        // ORDER TRACKING
+        // ============================================
+        function openTracking() {
+            document.getElementById('trackingModal').classList.add('active');
+        }
+
+        function closeTracking() {
+            document.getElementById('trackingModal').classList.remove('active');
+        }
+
+        function trackOrder() {
+            const orderNum = document.getElementById('trackingNumber').value;
+            if (!orderNum) {
+                showToast('Veuillez entrer un numéro de commande', 'error');
+                return;
+            }
+            document.getElementById('trackingResult').classList.add('active');
+            showToast('Suivi de commande chargé', 'success');
+        }
+
+        // ============================================
+        // INSTALLATION GUIDE
+        // ============================================
+        function openInstallGuide() {
+            document.getElementById('installModal').classList.add('active');
+        }
+
+        function closeInstallGuide() {
+            document.getElementById('installModal').classList.remove('active');
+        }
+
+        // Add link to open tracking in footer
+        document.querySelectorAll('a[href*="support"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (this.getAttribute('href') === '#support') {
+                    // Could open tracking modal if clicked from specific place
+                }
+            });
+        });
+
+        // Initialize - show cookie banner after delay
+        // Already handled above with setTimeout
     </script>
 </body>
 </html>
