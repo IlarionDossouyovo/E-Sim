@@ -1058,6 +1058,932 @@
             font-size: 2rem;
             cursor: pointer;
         }
+
+        /* ============================================ */
+        /* SHOPPING CART STYLES                        */
+        /* ============================================ */
+        .cart-btn {
+            position: relative;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.3rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .cart-btn:hover {
+            color: var(--primary);
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #f5576c;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cart-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .cart-modal.active {
+            display: flex;
+        }
+
+        .cart-content {
+            background: var(--bg-light);
+            border-radius: 20px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 80vh;
+            overflow-y: auto;
+            border: 1px solid var(--glass-border);
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .cart-header h3 {
+            color: white;
+            font-size: 1.3rem;
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .cart-items {
+            padding: 1rem;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--glass);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            align-items: center;
+        }
+
+        .cart-item-flag {
+            font-size: 2rem;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-info h4 {
+            color: white;
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .cart-item-info p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .cart-item-remove {
+            background: none;
+            border: none;
+            color: #f5576c;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .cart-empty {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-muted);
+        }
+
+        .cart-empty i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        .cart-footer {
+            padding: 1.5rem;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .cart-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .cart-actions .btn {
+            flex: 1;
+            text-align: center;
+        }
+
+        /* ============================================ */
+        /* AUTH MODAL STYLES                           */
+        /* ============================================ */
+        .auth-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .auth-modal.active {
+            display: flex;
+        }
+
+        .auth-content {
+            background: var(--bg-light);
+            border-radius: 20px;
+            width: 90%;
+            max-width: 420px;
+            border: 1px solid var(--glass-border);
+            overflow: hidden;
+        }
+
+        .auth-tabs {
+            display: flex;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .auth-tab {
+            flex: 1;
+            padding: 1rem;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .auth-tab.active {
+            background: var(--gradient-purple);
+            color: white;
+        }
+
+        .auth-form {
+            padding: 2rem;
+        }
+
+        .auth-form h2 {
+            color: white;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 2px solid var(--glass-border);
+            border-radius: 10px;
+            background: var(--glass);
+            color: white;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .form-group input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .auth-form .btn {
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .auth-divider {
+            display: flex;
+            align-items: center;
+            margin: 1.5rem 0;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .auth-divider::before,
+        .auth-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--glass-border);
+        }
+
+        .auth-divider span {
+            padding: 0 1rem;
+        }
+
+        .social-login {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-btn {
+            flex: 1;
+            padding: 0.8rem;
+            border: 2px solid var(--glass-border);
+            border-radius: 10px;
+            background: var(--glass);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .social-btn:hover {
+            border-color: var(--primary);
+            background: rgba(102, 126, 234, 0.2);
+        }
+
+        /* ============================================ */
+        /* LANGUAGE SELECTOR                           */
+        /* ============================================ */
+        .lang-selector {
+            position: relative;
+        }
+
+        .lang-btn {
+            background: none;
+            border: 2px solid var(--glass-border);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .lang-dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 0.5rem;
+            background: var(--bg-light);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            overflow: hidden;
+            min-width: 150px;
+            z-index: 100;
+        }
+
+        .lang-dropdown.active {
+            display: block;
+        }
+
+        .lang-option {
+            padding: 0.8rem 1rem;
+            color: var(--text-light);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: background 0.3s;
+        }
+
+        .lang-option:hover {
+            background: var(--glass);
+        }
+
+        .lang-option.active {
+            background: var(--primary);
+        }
+
+        /* ============================================ */
+        /* FAQ SECTION                                 */
+        /* ============================================ */
+        .faq-section {
+            padding: 5rem 0;
+            background: var(--bg-darker);
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .faq-question i {
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+
+        .faq-answer-content {
+            padding: 0 1.5rem 1.5rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        /* ============================================ */
+        /* TESTIMONIALS SECTION                        */
+        /* ============================================ */
+        .testimonials-section {
+            padding: 5rem 0;
+            background: linear-gradient(180deg, var(--bg-light) 0%, var(--bg-dark) 100%);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient-purple);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .testimonial-author {
+            color: white;
+            font-weight: 600;
+        }
+
+        .testimonial-location {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .testimonial-stars {
+            color: #ffc107;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-text {
+            color: var(--text-muted);
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        /* ============================================ */
+        /* COVERAGE MAP SECTION                        */
+        /* ============================================ */
+        .coverage-section {
+            padding: 5rem 0;
+            background: var(--bg-darker);
+        }
+
+        .coverage-map {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .coverage-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 1rem;
+        }
+
+        .coverage-country {
+            background: var(--bg-dark);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .coverage-country:hover {
+            border-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .coverage-country .flag {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .coverage-country .name {
+            color: var(--text-light);
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .coverage-country .status {
+            font-size: 0.75rem;
+            margin-top: 0.3rem;
+        }
+
+        .coverage-country .status.available {
+            color: #4caf50;
+        }
+
+        .coverage-country .status.limited {
+            color: #ff9800;
+        }
+
+        /* ============================================ */
+        /* COMPATIBILITY CHECKER                       */
+        /* ============================================ */
+        .compatibility-section {
+            padding: 5rem 0;
+        }
+
+        .compatibility-checker {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 3rem;
+            max-width: 600px;
+            margin: 2rem auto 0;
+        }
+
+        .device-input {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .device-input input {
+            flex: 1;
+            padding: 1rem;
+            border: 2px solid var(--glass-border);
+            border-radius: 12px;
+            background: var(--glass);
+            color: white;
+            font-size: 1rem;
+        }
+
+        .device-input input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .compatibility-result {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .compatibility-result.active {
+            display: block;
+        }
+
+        .compatibility-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .compatibility-result.compatible .compatibility-icon {
+            color: #4caf50;
+        }
+
+        .compatibility-result.incompatible .compatibility-icon {
+            color: #f5576c;
+        }
+
+        .compatibility-result h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .compatibility-result p {
+            color: var(--text-muted);
+        }
+
+        .device-list {
+            margin-top: 2rem;
+            text-align: left;
+        }
+
+        .device-list h4 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .device-list ul {
+            list-style: none;
+        }
+
+        .device-list li {
+            padding: 0.8rem;
+            border-bottom: 1px solid var(--glass-border);
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .device-list li i {
+            color: #4caf50;
+        }
+
+        /* ============================================ */
+        /* PRICE CALCULATOR                            */
+        /* ============================================ */
+        .calculator-section {
+            padding: 5rem 0;
+            background: var(--bg-darker);
+        }
+
+        .price-calculator {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 3rem;
+            max-width: 700px;
+            margin: 2rem auto 0;
+        }
+
+        .calculator-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .calculator-group label {
+            display: block;
+            color: var(--text-light);
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+        }
+
+        .calculator-group select,
+        .calculator-group input {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 2px solid var(--glass-border);
+            border-radius: 10px;
+            background: var(--bg-dark);
+            color: white;
+            font-size: 1rem;
+        }
+
+        .calculator-group select:focus,
+        .calculator-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .calculator-result {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .calculator-price {
+            font-size: 3rem;
+            font-weight: 800;
+            background: var(--gradient-purple);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .calculator-period {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .calculator-features {
+            list-style: none;
+            margin: 1.5rem 0;
+            text-align: left;
+        }
+
+        .calculator-features li {
+            padding: 0.5rem 0;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .calculator-features li i {
+            color: #4caf50;
+        }
+
+        /* ============================================ */
+        /* COMPARISON TABLE                            */
+        /* ============================================ */
+        .comparison-section {
+            padding: 5rem 0;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-top: 2rem;
+            background: var(--glass);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1.2rem;
+            text-align: center;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .comparison-table th {
+            background: var(--bg-dark);
+            color: white;
+            font-weight: 600;
+        }
+
+        .comparison-table th:first-child {
+            text-align: left;
+        }
+
+        .comparison-table td {
+            color: var(--text-muted);
+        }
+
+        .comparison-table td:first-child {
+            text-align: left;
+            color: var(--text-light);
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table .highlight {
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        .comparison-table .best-value {
+            position: relative;
+        }
+
+        .comparison-table .best-value::after {
+            content: '★ Best Value';
+            position: absolute;
+            top: -10px;
+            right: 50%;
+            transform: translateX(50%);
+            background: var(--gradient-purple);
+            color: white;
+            font-size: 0.7rem;
+            padding: 0.3rem 0.6rem;
+            border-radius: 20px;
+        }
+
+        .check-icon {
+            color: #4caf50;
+            font-size: 1.2rem;
+        }
+
+        .cross-icon {
+            color: #f5576c;
+            font-size: 1.2rem;
+        }
+
+        /* ============================================ */
+        /* NEWSLETTER SECTION                          */
+        /* ============================================ */
+        .newsletter-section {
+            padding: 4rem 0;
+            background: var(--gradient-purple);
+            text-align: center;
+        }
+
+        .newsletter-content h2 {
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter-content p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            min-width: 250px;
+            padding: 1rem 1.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+        }
+
+        .newsletter-form input:focus {
+            outline: none;
+        }
+
+        .newsletter-form button {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            background: var(--bg-dark);
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .newsletter-form button:hover {
+            transform: scale(1.05);
+        }
+
+        /* ============================================ */
+        /* TOAST NOTIFICATIONS                         */
+        /* ============================================ */
+        .toast-container {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            z-index: 3000;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .toast {
+            background: var(--bg-light);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: slideIn 0.3s ease;
+            min-width: 280px;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .toast.success {
+            border-left: 4px solid #4caf50;
+        }
+
+        .toast.error {
+            border-left: 4px solid #f5576c;
+        }
+
+        .toast.info {
+            border-left: 4px solid var(--primary);
+        }
+
+        .toast i {
+            font-size: 1.3rem;
+        }
+
+        .toast.success i { color: #4caf50; }
+        .toast.error i { color: #f5576c; }
+        .toast.info i { color: var(--primary); }
+
+        .toast-message {
+            color: var(--text-light);
+            flex: 1;
+        }
+
+        .toast-close {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -1090,8 +2016,23 @@
                 <li><a href="#support">Support</a></li>
             </ul>
             <div class="user-actions">
-                <a href="#" class="btn btn-secondary">Connexion</a>
-                <a href="#" class="btn btn-primary">Inscription</a>
+                <div class="lang-selector">
+                    <button class="lang-btn" onclick="toggleLangDropdown()">
+                        <span>🇫🇷</span> FR <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="lang-dropdown" id="langDropdown">
+                        <div class="lang-option active" data-lang="fr" onclick="changeLanguage('fr')">🇫🇷 Français</div>
+                        <div class="lang-option" data-lang="en" onclick="changeLanguage('en')">🇬🇧 English</div>
+                        <div class="lang-option" data-lang="es" onclick="changeLanguage('es')">🇪🇸 Español</div>
+                        <div class="lang-option" data-lang="de" onclick="changeLanguage('de')">🇩🇪 Deutsch</div>
+                    </div>
+                </div>
+                <button class="cart-btn" onclick="openCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-badge" id="cartBadge">0</span>
+                </button>
+                <a href="#" class="btn btn-secondary" onclick="openAuthModal('login')">Connexion</a>
+                <a href="#" class="btn btn-primary" onclick="openAuthModal('register')">Inscription</a>
             </div>
             <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
                 <i class="fas fa-bars"></i>
@@ -1715,6 +2656,403 @@
         </div>
     </main>
 
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>📧 Restez Informé</h2>
+                <p>Abonnez-vous pour recevoir nos offres exclusives et derniers conseils voyage</p>
+                <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
+                    <input type="email" placeholder="Votre adresse email" required>
+                    <button type="submit">S'abonner</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">❓ Questions Fréquentes</h2>
+                <p class="section-subtitle">Trouvez les réponses à vos questions sur nos forfaits eSIM</p>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Qu'est-ce qu'une eSIM ?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Une eSIM (embedded SIM) est une carte SIM numérique intégrée directement dans votre appareil. Contrairement aux cartes SIM physiques, vous n'avez besoin d'aucune carte physique - l'opérateur vous envoie un code QR à scanner pour activer votre forfait.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Mon appareil est-il compatible eSIM ?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            La plupart des appareils récents sont compatibles eSIM. Cela inclut les iPhone XS et modèles ultérieurs, les Samsung Galaxy S20 et ultérieurs, Google Pixel 3 et ultérieurs, ainsi que de nombreux autres appareils. Utilisez notre vérificateur de compatibilité ci-dessus.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Comment activer ma eSIM ?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Après l'achat, vous recevez un email avec un code QR. Scannez ce code avec votre téléphone, suivez les instructions à l'écran, et votre forfait sera activé en 2 minutes environ. Aucun rendez-vous en magasin n'est nécessaire.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Puis-je garder mon numéro ?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Nos forfaits eSIM sont conçus pour les voyages. Vous pouvez utiliser votre numéro WhatsApp ou autre application de messagerie avec le WiFi ou nos données. Pour appeler depuis votre numéro existant, considerer le roaming international.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Comment puis-je recharger mon forfait ?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Connectez-vous à votre espace client, sélectionnez le forfait que vous souhaitez prolonger, et cliquez sur "Recharger". Vous pouvez également activer la recharge automatique pour ne jamais manquer de données.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">⭐ Avis Clients</h2>
+                <p class="section-subtitle">Découvrez ce que nos clients disent de leur expérience</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">ML</div>
+                        <div>
+                            <div class="testimonial-author">Marie L.</div>
+                            <div class="testimonial-location">Paris, France</div>
+                        </div>
+                    </div>
+                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"Parfait pour mon voyage au Japon ! Activation en 2 minutes top chrono. Le service client est super réactif"</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">JT</div>
+                        <div>
+                            <div class="testimonial-author">Jean T.</div>
+                            <div class="testimonial-location">Lyon, France</div>
+                        </div>
+                    </div>
+                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"Utilisé aux USA pendant 3 semaines. Couverture parfaite, vitesse 4G excellente. Je recommande"</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">SB</div>
+                        <div>
+                            <div class="testimonial-author">Sophie B.</div>
+                            <div class="testimonial-location">Marseille, France</div>
+                        </div>
+                    </div>
+                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"Prix imbattables et qualité au rendez-vous. J'ai économisé plus de 100€ par rapport à mon opérateur"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coverage Section -->
+    <section class="coverage-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">🌍 Couverture Mondiale</h2>
+                <p class="section-subtitle">Plus de 150 pays couverts avec les meilleurs opérateurs locaux</p>
+            </div>
+            <div class="coverage-map">
+                <div class="coverage-grid">
+                    <div class="coverage-country"><div class="flag">🇫🇷</div><div class="name">France</div><div class="status available">✓ Disponible</div></div>
+                    <div class="coverage-country"><div class="flag">🇪🇸</div><div class="name">Espagne</div><div class="status available">✓ Disponible</div></div>
+                    <div class="coverage-country"><div class="flag">🇮🇹</div><div class="name">Italie</div><div class="status available">✓ Disponible</div></div>
+                    <div class="coverage-country"><div class="flag">🇩🇪</div><div class="name">Allemagne</div><div class="status available">✓ Disponible</div></div>
+                    <div class="coverage-country"><div class="flag">🇬🇧</div><div class="name">Royaume-Uni</div><div class="status available">✓ Disponible</div></div>
+                    <div class="coverage-country"><div class="flag">🇺🇸</div><div class="name">États-Unis</div><div class="status available">✓ Disponible</div></div>
+                    <div class="coverage-country"><div class="flag">🇯🇵</div><div class="name">Japon</div><div class="status available">✓ Disponible</div></div>
+                    <div class="coverage-country"><div class="flag">🇰🇷</div><div class="name">Corée du Sud</div><div class="status available">✓ Disponible</div></div>
+                    <div class="coverage-country"><div class="flag">🇨🇳</div><div class="name">Chine</div><div class="status available">✓ Disponible</div></div>
+                    <div class="coverage-country"><div class="flag">🇹🇭</div><div class="name">Thaïlande</div><div class="status available">✓ Disponible</div></div>
+                    <div class="coverage-country"><div class="flag">🇦🇺</div><div class="name">Australie</div><div class="status available">✓ Disponible</div></div>
+                    <div class="coverage-country"><div class="flag">🇧🇷</div><div class="name">Brésil</div><div class="status available">✓ Disponible</div></div>
+                    <div class="coverage-country"><div class="flag">🇿🇦</div><div class="name">Afrique du Sud</div><div class="status available">✓ Disponible</div></div>
+                    <div class="coverage-country"><div class="flag">🇦🇪</div><div class="name">Émirats Arabes</div><div class="status available">✓ Disponible</div></div>
+                    <div class="coverage-country"><div class="flag">🇮🇳</div><div class="name">Inde</div><div class="status limited">~ Limité</div></div>
+                    <div class="coverage-country"><div class="flag">🇷🇺</div><div class="name">Russie</div><div class="status limited">~ Limité</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Compatibility Checker -->
+    <section class="compatibility-section" id="compatibility">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">📱 Vérificateur de Compatibilité</h2>
+                <p class="section-subtitle">Vérifiez si votre appareil supporte la technologie eSIM</p>
+            </div>
+            <div class="compatibility-checker">
+                <div class="device-input">
+                    <input type="text" id="deviceModel" placeholder="Entrez le modèle de votre téléphone (ex: iPhone 14, Samsung S23)">
+                    <button class="btn btn-primary" onclick="checkCompatibility()">Vérifier</button>
+                </div>
+                <div class="compatibility-result" id="compatResult">
+                    <div class="compatibility-icon"><i class="fas fa-check-circle"></i></div>
+                    <h3>Compatible eSIM</h3>
+                    <p>Votre appareil supporte la technologie eSIM ! Vous pouvez commander votre forfait.</p>
+                </div>
+                <div class="device-list">
+                    <h4>📋 Appareils couramment compatibles :</h4>
+                    <ul>
+                        <li><i class="fas fa-check"></i> iPhone XS, XS Max, XR et modèles ultérieurs</li>
+                        <li><i class="fas fa-check"></i> Samsung Galaxy S20, S21, S22, S23 et ultérieurs</li>
+                        <li><i class="fas fa-check"></i> Google Pixel 3, 4, 5, 6, 7 et ultérieurs</li>
+                        <li><i class="fas fa-check"></i> Huawei P30 Pro, Mate 20 Pro et ultérieurs</li>
+                        <li><i class="fas fa-check"></i> Motorola Razr, Edge et ultérieurs</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Price Calculator -->
+    <section class="calculator-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">🧮 Calculateur de Prix</h2>
+                <p class="section-subtitle">Estimez le coût de votre forfait en quelques clics</p>
+            </div>
+            <div class="price-calculator">
+                <div class="calculator-row">
+                    <div class="calculator-group">
+                        <label>Destination</label>
+                        <select id="calcDestination" onchange="calculatePrice()">
+                            <option value="">Sélectionner un pays</option>
+                            <option value="europe" data-price="2">Europe - 2€/GB</option>
+                            <option value="usa" data-price="3">États-Unis - 3€/GB</option>
+                            <option value="asia" data-price="2.5">Asie - 2.5€/GB</option>
+                            <option value="worldwide" data-price="4">Monde entier - 4€/GB</option>
+                        </select>
+                    </div>
+                    <div class="calculator-group">
+                        <label>Durée (jours)</label>
+                        <select id="calcDuration" onchange="calculatePrice()">
+                            <option value="7">7 jours</option>
+                            <option value="14">14 jours</option>
+                            <option value="30" selected>30 jours</option>
+                            <option value="60">60 jours</option>
+                            <option value="90">90 jours</option>
+                        </select>
+                    </div>
+                    <div class="calculator-group">
+                        <label>Data (GB)</label>
+                        <select id="calcData" onchange="calculatePrice()">
+                            <option value="1">1 GB</option>
+                            <option value="3">3 GB</option>
+                            <option value="5">5 GB</option>
+                            <option value="10" selected>10 GB</option>
+                            <option value="20">20 GB</option>
+                            <option value="50">50 GB</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="calculator-result" id="calcResult">
+                    <div class="calculator-price" id="calcPrice">0€</div>
+                    <div class="calculator-period">pour <span id="calcPeriod">30 jours</span></div>
+                    <ul class="calculator-features">
+                        <li><i class="fas fa-check"></i> <span id="calcDataText">10 GB</span> de data 5G/4G</li>
+                        <li><i class="fas fa-check"></i> Appels illimités (selon destination)</li>
+                        <li><i class="fas fa-check"></i> Activation instantanée</li>
+                        <li><i class="fas fa-check"></i> Support 24/7</li>
+                    </ul>
+                    <button class="btn btn-primary" onclick="addCalculatedToCart()">Commander ce forfait</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Table -->
+    <section class="comparison-section" id="compare">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">⚖️ Comparer les Forfaits</h2>
+                <p class="section-subtitle">Choisissez le forfait qui correspond le mieux à vos besoins</p>
+            </div>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Caractéristiques</th>
+                        <th class="best-value">Starter<br><span style="font-size:0.8rem;font-weight:400;">5€</span></th>
+                        <th class="highlight">Essential<br><span style="font-size:0.8rem;font-weight:400;">15€</span></th>
+                        <th>Premium<br><span style="font-size:0.8rem;font-weight:400;">35€</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Data</td>
+                        <td>1 GB</td>
+                        <td class="highlight">10 GB</td>
+                        <td>50 GB</td>
+                    </tr>
+                    <tr>
+                        <td>Durée</td>
+                        <td>7 jours</td>
+                        <td class="highlight">30 jours</td>
+                        <td>30 jours</td>
+                    </tr>
+                    <tr>
+                        <td>Réseau</td>
+                        <td>4G LTE</td>
+                        <td class="highlight">5G/4G LTE</td>
+                        <td>5G/4G LTE</td>
+                    </tr>
+                    <tr>
+                        <td>Appels</td>
+                        <td><i class="fas fa-times cross-icon"></i></td>
+                        <td class="highlight"><i class="fas fa-check check-icon"></i> Illimités EU</td>
+                        <td><i class="fas fa-check check-icon"></i> Illimités Monde</td>
+                    </tr>
+                    <tr>
+                        <td>SMS</td>
+                        <td><i class="fas fa-times cross-icon"></i></td>
+                        <td class="highlight"><i class="fas fa-check check-icon"></i></td>
+                        <td><i class="fas fa-check check-icon"></i></td>
+                    </tr>
+                    <tr>
+                        <td>Support</td>
+                        <td>Email</td>
+                        <td class="highlight">24/7 Chat</td>
+                        <td>24/7 Phone</td>
+                    </tr>
+                    <tr>
+                        <td>Activation</td>
+                        <td>5 min</td>
+                        <td class="highlight">2 min</td>
+                        <td>Instantanée</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><button class="btn btn-secondary" style="padding:0.5rem 1rem;font-size:0.85rem;">Choisir</button></td>
+                        <td class="highlight"><button class="btn btn-primary" style="padding:0.5rem 1rem;font-size:0.85rem;">Choisir</button></td>
+                        <td><button class="btn btn-secondary" style="padding:0.5rem 1rem;font-size:0.85rem;">Choisir</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h3>🛒 Votre Panier</h3>
+                <button class="close-cart" onclick="closeCart()">&times;</button>
+            </div>
+            <div class="cart-items" id="cartItems">
+                <div class="cart-empty">
+                    <i class="fas fa-shopping-cart"></i>
+                    <p>Votre panier est vide</p>
+                </div>
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>Total</span>
+                    <span id="cartTotal">0€</span>
+                </div>
+                <div class="cart-actions">
+                    <button class="btn btn-secondary" onclick="closeCart()">Continuer</button>
+                    <button class="btn btn-primary" onclick="checkout()">Passer la commande</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Auth Modal -->
+    <div class="auth-modal" id="authModal">
+        <div class="auth-content">
+            <div class="auth-tabs">
+                <button class="auth-tab active" data-tab="login" onclick="switchAuthTab('login')">Connexion</button>
+                <button class="auth-tab" data-tab="register" onclick="switchAuthTab('register')">Inscription</button>
+            </div>
+            <div class="auth-form" id="loginForm">
+                <h2>Connexion</h2>
+                <form onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" placeholder="votre@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Mot de passe</label>
+                        <input type="password" placeholder="••••••••" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Se connecter</button>
+                </form>
+                <div class="auth-divider"><span>ou</span></div>
+                <div class="social-login">
+                    <button class="social-btn"><i class="fab fa-google"></i> Google</button>
+                    <button class="social-btn"><i class="fab fa-apple"></i> Apple</button>
+                </div>
+            </div>
+            <div class="auth-form" id="registerForm" style="display:none;">
+                <h2>Créer un compte</h2>
+                <form onsubmit="handleRegister(event)">
+                    <div class="form-group">
+                        <label>Nom complet</label>
+                        <input type="text" placeholder="Jean Dupont" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" placeholder="votre@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Mot de passe</label>
+                        <input type="password" placeholder="••••••••" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Créer un compte</button>
+                </form>
+                <div class="auth-divider"><span>ou</span></div>
+                <div class="social-login">
+                    <button class="social-btn"><i class="fab fa-google"></i> Google</button>
+                    <button class="social-btn"><i class="fab fa-apple"></i> Apple</button>
+                </div>
+            </div>
+            <div style="text-align:center;padding:1rem;">
+                <button onclick="closeAuthModal()" style="background:none;border:none;color:var(--text-muted);cursor:pointer;">✕ Fermer</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
     <!-- Footer -->
     <footer id="support">
         <div class="container">
@@ -1887,6 +3225,284 @@
                 el.style.transform = 'translateY(0)';
             });
         }, 100);
+
+        // ============================================
+        // SHOPPING CART FUNCTIONALITY
+        // ============================================
+        let cart = [];
+
+        function addToCart(country, price, data, days) {
+            const item = {
+                id: Date.now(),
+                country: country,
+                price: price,
+                data: data,
+                days: days
+            };
+            cart.push(item);
+            updateCartBadge();
+            showToast('Produit ajouté au panier!', 'success');
+        }
+
+        function removeFromCart(id) {
+            cart = cart.filter(item => item.id !== id);
+            updateCartBadge();
+            renderCart();
+        }
+
+        function updateCartBadge() {
+            document.getElementById('cartBadge').textContent = cart.length;
+        }
+
+        function openCart() {
+            document.getElementById('cartModal').classList.add('active');
+            renderCart();
+        }
+
+        function closeCart() {
+            document.getElementById('cartModal').classList.remove('active');
+        }
+
+        function renderCart() {
+            const cartItemsEl = document.getElementById('cartItems');
+            const cartTotalEl = document.getElementById('cartTotal');
+            
+            if (cart.length === 0) {
+                cartItemsEl.innerHTML = `
+                    <div class="cart-empty">
+                        <i class="fas fa-shopping-cart"></i>
+                        <p>Votre panier est vide</p>
+                    </div>
+                `;
+                cartTotalEl.textContent = '0€';
+                return;
+            }
+
+            let total = 0;
+            cartItemsEl.innerHTML = cart.map(item => {
+                total += item.price;
+                return `
+                    <div class="cart-item">
+                        <span class="cart-item-flag">🌍</span>
+                        <div class="cart-item-info">
+                            <h4>${item.country}</h4>
+                            <p>${item.data} - ${item.days} jours</p>
+                        </div>
+                        <span style="color:var(--primary);font-weight:700;">${item.price}€</span>
+                        <button class="cart-item-remove" onclick="removeFromCart(${item.id})">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                `;
+            }).join('');
+            
+            cartTotalEl.textContent = total + '€';
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                showToast('Votre panier est vide!', 'error');
+                return;
+            }
+            closeCart();
+            openAuthModal('register');
+            showToast('Veuillez vous connecter pour finaliser votre commande', 'info');
+        }
+
+        // Add to cart button handler
+        document.querySelectorAll('.product-card .btn-primary').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const card = this.closest('.product-card');
+                const country = card.querySelector('.product-title').textContent;
+                const price = parseInt(card.querySelector('.price-value').textContent);
+                addToCart(country, price, '5GB', '7 jours');
+            });
+        });
+
+        // ============================================
+        // AUTH MODAL FUNCTIONALITY
+        // ============================================
+        function openAuthModal(tab = 'login') {
+            document.getElementById('authModal').classList.add('active');
+            switchAuthTab(tab);
+        }
+
+        function closeAuthModal() {
+            document.getElementById('authModal').classList.remove('active');
+        }
+
+        function switchAuthTab(tab) {
+            document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
+            document.querySelector(`.auth-tab[data-tab="${tab}"]`).classList.add('active');
+            
+            document.getElementById('loginForm').style.display = tab === 'login' ? 'block' : 'none';
+            document.getElementById('registerForm').style.display = tab === 'register' ? 'block' : 'none';
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            closeAuthModal();
+            showToast('Connexion réussie! Bienvenue.', 'success');
+        }
+
+        function handleRegister(e) {
+            e.preventDefault();
+            closeAuthModal();
+            showToast('Compte créé avec succès!', 'success');
+        }
+
+        // ============================================
+        // LANGUAGE SELECTOR
+        // ============================================
+        function toggleLangDropdown() {
+            document.getElementById('langDropdown').classList.toggle('active');
+        }
+
+        function changeLanguage(lang) {
+            document.querySelectorAll('.lang-option').forEach(opt => opt.classList.remove('active'));
+            document.querySelector(`.lang-option[data-lang="${lang}"]`).classList.add('active');
+            
+            const langFlags = { 'fr': '🇫🇷', 'en': '🇬🇧', 'es': '🇪🇸', 'de': '🇩🇪' };
+            document.querySelector('.lang-btn').innerHTML = `<span>${langFlags[lang]}</span> ${lang.toUpperCase()} <i class="fas fa-chevron-down"></i>`;
+            
+            toggleLangDropdown();
+            showToast('Langue changée!', 'info');
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.lang-selector')) {
+                document.getElementById('langDropdown').classList.remove('active');
+            }
+        });
+
+        // ============================================
+        // FAQ ACCORDION
+        // ============================================
+        function toggleFaq(element) {
+            const item = element.parentElement;
+            item.classList.toggle('active');
+        }
+
+        // ============================================
+        // COMPATIBILITY CHECKER
+        // ============================================
+        const compatibleDevices = ['iphone', 'samsung', 'pixel', 'huawei', 'motorola', 'oneplus', 'oppo', 'xiaomi'];
+        
+        function checkCompatibility() {
+            const input = document.getElementById('deviceModel').value.toLowerCase();
+            const result = document.getElementById('compatResult');
+            
+            if (!input) {
+                showToast('Veuillez entrer un modèle d\'appareil', 'error');
+                return;
+            }
+            
+            const isCompatible = compatibleDevices.some(brand => input.includes(brand));
+            
+            result.classList.add('active');
+            if (isCompatible) {
+                result.className = 'compatibility-result active compatible';
+                result.innerHTML = `
+                    <div class="compatibility-icon"><i class="fas fa-check-circle"></i></div>
+                    <h3>Compatible eSIM</h3>
+                    <p>Votre appareil supporte la technologie eSIM ! Vous pouvez commander votre forfait.</p>
+                `;
+            } else {
+                result.className = 'compatibility-result active incompatible';
+                result.innerHTML = `
+                    <div class="compatibility-icon"><i class="fas fa-times-circle"></i></div>
+                    <h3>Vérification nécessaire</h3>
+                    <p>Nous ne pouvons pas确认 automatiquement. Veuillez consulter notre liste d'appareils compatibles ou contacter le support.</p>
+                `;
+            }
+        }
+
+        // ============================================
+        // PRICE CALCULATOR
+        // ============================================
+        function calculatePrice() {
+            const destination = document.getElementById('calcDestination');
+            const duration = document.getElementById('calcDuration');
+            const data = document.getElementById('calcData');
+            
+            const pricePerGB = parseFloat(destination.options[destination.selectedIndex]?.dataset.price) || 0;
+            const gb = parseInt(data.value);
+            const days = parseInt(duration.value);
+            
+            if (pricePerGB === 0) {
+                document.getElementById('calcResult').style.display = 'none';
+                return;
+            }
+            
+            const totalPrice = pricePerGB * gb;
+            
+            document.getElementById('calcResult').style.display = 'block';
+            document.getElementById('calcPrice').textContent = totalPrice + '€';
+            document.getElementById('calcPeriod').textContent = days + ' jours';
+            document.getElementById('calcDataText').textContent = gb + ' GB';
+        }
+
+        function addCalculatedToCart() {
+            const destination = document.getElementById('calcDestination');
+            const duration = document.getElementById('calcDuration');
+            const data = document.getElementById('calcData');
+            
+            const country = destination.options[destination.selectedIndex].text.split(' - ')[0];
+            const price = parseInt(document.getElementById('calcPrice').textContent);
+            const gb = data.value + ' GB';
+            const days = duration.value + ' jours';
+            
+            addToCart(country, price, gb, days);
+        }
+
+        // ============================================
+        // NEWSLETTER
+        // ============================================
+        function subscribeNewsletter(e) {
+            e.preventDefault();
+            const email = e.target.querySelector('input').value;
+            showToast('Merci de votre inscription!', 'success');
+            e.target.reset();
+        }
+
+        // ============================================
+        // TOAST NOTIFICATIONS
+        // ============================================
+        function showToast(message, type = 'info') {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            
+            const icons = {
+                'success': 'fa-check-circle',
+                'error': 'fa-times-circle',
+                'info': 'fa-info-circle'
+            };
+            
+            toast.innerHTML = `
+                <i class="fas ${icons[type]}"></i>
+                <span class="toast-message">${message}</span>
+                <button class="toast-close" onclick="this.parentElement.remove()">
+                    <i class="fas fa-times"></i>
+                </button>
+            `;
+            
+            container.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.remove();
+            }, 5000);
+        }
+
+        // Close modals on outside click
+        document.getElementById('cartModal').addEventListener('click', function(e) {
+            if (e.target === this) closeCart();
+        });
+
+        document.getElementById('authModal').addEventListener('click', function(e) {
+            if (e.target === this) closeAuthModal();
+        });
     </script>
 </body>
 </html>
