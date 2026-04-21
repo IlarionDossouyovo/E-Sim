@@ -1,0 +1,53 @@
+# E-Sim By ELECTRON - Development Docker Compose
+
+version: '3.8'
+
+services:
+  # Main Application (Development)
+  app:
+    build:
+      context: ..
+      dockerfile: deployment/Dockerfile
+      target: development
+    ports:
+      - "3000:3000"
+    volumes:
+      - ../backend:/app/backend
+      - ../public:/app/public
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+      - JWT_SECRET=dev-secret-key-not-for-production
+    env_file:
+      - .env.development
+    restart: unless-stopped
+    networks:
+      - esim-dev
+    command: npm run dev
+
+  # Redis (Development)
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    networks:
+      - esim-dev
+
+  # Adminer (Database GUI)
+  adminer:
+    image: adminer:latest
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    networks:
+      - esim-dev
+
+networks:
+  esim-dev:
+    driver: bridge
+
+# Usage:
+# docker-compose -f docker-compose.dev.yml up -d 
+# docker-compose -f docker-compose.dev.yml logs -f
+# docker-compose -f docker-compose.dev.yml down
