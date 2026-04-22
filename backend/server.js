@@ -10,6 +10,11 @@ const orderRoutes = require('./routes/orders');
 const esimRoutes = require('./routes/esim');
 const paymentRoutes = require('./routes/payment');
 const resellerRoutes = require('./routes/reseller');
+const automationRoutes = require('./routes/automation');
+const webhookRoutes = require('./routes/webhooks');
+const aiRoutes = require('./routes/ai');
+const emailRoutes = require('./routes/email');
+const notificationRoutes = require('./routes/notifications');
 
 const app = express();
 
@@ -29,6 +34,11 @@ app.use('/api/orders', orderRoutes);
 app.use('/api/esim', esimRoutes);
 app.use('/api/payment', paymentRoutes);
 app.use('/api/reseller', resellerRoutes);
+app.use('/api/automation', automationRoutes);
+app.use('/api/webhooks', webhookRoutes);
+app.use('/api/ai', aiRoutes);
+app.use('/api/email', emailRoutes);
+app.use('/api/notifications', notificationRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {
