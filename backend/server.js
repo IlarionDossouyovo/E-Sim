@@ -15,6 +15,11 @@ const webhookRoutes = require('./routes/webhooks');
 const aiRoutes = require('./routes/ai');
 const emailRoutes = require('./routes/email');
 const notificationRoutes = require('./routes/notifications');
+const affiliateRoutes = require('./routes/affiliate');
+const analyticsRoutes = require('./routes/analytics');
+const newsletterRoutes = require('./routes/newsletter');
+const enterpriseRoutes = require('./routes/enterprise');
+const ticketRoutes = require('./routes/tickets');
 
 const app = express();
 
@@ -39,6 +44,11 @@ app.use('/api/webhooks', webhookRoutes);
 app.use('/api/ai', aiRoutes);
 app.use('/api/email', emailRoutes);
 app.use('/api/notifications', notificationRoutes);
+app.use('/api/affiliate', affiliateRoutes);
+app.use('/api/analytics', analyticsRoutes);
+app.use('/api/newsletter', newsletterRoutes);
+app.use('/api/enterprise', enterpriseRoutes);
+app.use('/api/tickets', ticketRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {
